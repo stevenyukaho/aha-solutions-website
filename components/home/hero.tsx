@@ -19,7 +19,7 @@ export function Hero() {
           </p>
           <div style={{ display: 'flex', gap: 12, alignItems: 'center', flexWrap: 'wrap' }}>
             <BtnPrimary>Book a free workflow audit</BtnPrimary>
-            <BtnGhost>See how it works</BtnGhost>
+            <BtnGhost href="#how-it-works">See how it works</BtnGhost>
           </div>
           <div style={{ marginTop: 12, fontSize: 12.5, color: 'var(--text-3)' }}>
             Free 30-min audit. No pitch. No pressure.
@@ -27,7 +27,7 @@ export function Hero() {
           <div className="mono" style={{ marginTop: 22, fontSize: 10.5, color: 'var(--text-3)', letterSpacing: 1.4, display: 'flex', gap: 14, flexWrap: 'wrap' }}>
             <span>40+ SYSTEMS SHIPPED</span>
             <span>·</span>
-            <span>EDTECH · B2B · SAAS</span>
+            <span>EDUCATION · AUTOMOTIVE · RETAIL · SERVICES</span>
             <span>·</span>
             <span>BUILT BY EX-CEO (PUBLIC CO.)</span>
           </div>

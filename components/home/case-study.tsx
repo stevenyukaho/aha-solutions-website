@@ -53,13 +53,13 @@ export function CaseStudy() {
           <div />
           <div className="card" style={{ padding: 20, borderLeft: '3px solid var(--accent)' }}>
             <div className="serif" style={{ fontSize: 18, lineHeight: 1.3, fontStyle: 'italic', marginBottom: 14 }}>
-              &ldquo;Response time dropped 80%. We stopped hiring and started closing.&rdquo;
+              &ldquo;Our content creation costs have dropped significantly. The system generates multilingual content while maintaining our brand voice.&rdquo;
             </div>
             <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-              <div style={{ width: 36, height: 36, borderRadius: 999, background: 'linear-gradient(135deg, #6a5acd, #8a7fea)', display: 'grid', placeItems: 'center', fontSize: 13, fontWeight: 600 }}>K</div>
+              <div style={{ width: 36, height: 36, borderRadius: 999, background: 'linear-gradient(135deg, #6a5acd, #8a7fea)', display: 'grid', placeItems: 'center', fontSize: 13, fontWeight: 600 }}>C</div>
               <div>
-                <div style={{ fontSize: 12, fontWeight: 600 }}>Founder</div>
-                <div className="mono" style={{ fontSize: 10, color: 'var(--text-3)', letterSpacing: 1 }}>EDTECH COMPANY</div>
+                <div style={{ fontSize: 12, fontWeight: 600 }}>CEO</div>
+                <div className="mono" style={{ fontSize: 10, color: 'var(--text-3)', letterSpacing: 1 }}>EDUCATION CONSULTING COMPANY</div>
               </div>
             </div>
           </div>

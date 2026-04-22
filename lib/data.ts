@@ -210,7 +210,7 @@ export const founderStats: StatItem[] = [
 ];
 
 // LogosStrip (from sections.jsx)
-export const logosData: string[] = ['edtech', 'SaaSCo', 'GrowthLab', 'LeanHub', 'AgencyX', 'TechStart'];
+export const logosData: string[] = ['Education', 'Automotive', 'Retail & E-commerce', 'Professional Services'];
 
 // ============================================================
 // SYSTEMS PAGE DATA (from hifi/systems-page.jsx)
@@ -503,7 +503,7 @@ export const caseFilters: CaseFilter[] = [
   { id: 'lead', label: 'Lead Systems' },
   { id: 'sales', label: 'Sales Systems' },
   { id: 'ops', label: 'Operations Systems' },
-  { id: 'edtech', label: 'EdTech' },
+  { id: 'education', label: 'Education' },
   { id: 'service', label: 'Service Businesses' },
 ];
 
@@ -536,17 +536,17 @@ export const caseStudies: CaseStudyData[] = [
     id: 'c1',
     category: 'lead',
     systemLabel: 'Lead Capture & Response System',
-    cat: ['lead', 'edtech'],
+    cat: ['lead'],
     headline: 'From 24-hour replies to under 60 seconds.',
     context:
-      'An EdTech company with strong inbound lead volume but slow response times was losing high-intent prospects to faster competitors.',
+      'An education consulting company with strong inbound lead volume but slow response times was losing high-intent prospects to faster competitors.',
     problems: [
       'Leads sitting untouched for hours',
       'Prospects going cold before a reply',
       'Paying for traffic that never converts',
     ],
     meta: [
-      { k: 'Industry', v: 'EdTech' },
+      { k: 'Industry', v: 'Education Consulting' },
       { k: 'Team Size', v: '15' },
       { k: 'Timeline', v: '14 days' },
     ],
@@ -571,14 +571,14 @@ export const caseStudies: CaseStudyData[] = [
     cat: ['sales'],
     headline: 'Stalled pipeline, now closing 2.3× more meetings.',
     context:
-      'A B2B SaaS team had strong demo volume but lost most warm leads in the silent week after the first call.',
+      'An automotive services company had strong inquiry volume but lost most warm leads in the silent week after the first call.',
     problems: [
       '"I\'ll follow up tomorrow" turning into next week',
       "Warm leads going dark in someone's inbox",
       'Reps re-pitching the same prospect from scratch',
     ],
     meta: [
-      { k: 'Industry', v: 'B2B SaaS' },
+      { k: 'Industry', v: 'Automotive Services' },
       { k: 'Team Size', v: '22' },
       { k: 'Timeline', v: '16 days' },
     ],
@@ -602,14 +602,14 @@ export const caseStudies: CaseStudyData[] = [
     cat: ['ops', 'service'],
     headline: "20+ hours a week, back in the team's calendar.",
     context:
-      'A marketing agency was burning a full workday per person on manual reporting, data pulls, and client updates.',
+      'A retail and e-commerce company was burning a full workday per person on manual reporting, data pulls, and client updates.',
     problems: [
       'Same data re-entered across four tools every week',
       'Reports built from scratch every Monday morning',
       'Client questions sitting in inboxes for days',
     ],
     meta: [
-      { k: 'Industry', v: 'Marketing Agency' },
+      { k: 'Industry', v: 'Retail & E-commerce' },
       { k: 'Team Size', v: '8' },
       { k: 'Timeline', v: '10 days' },
     ],

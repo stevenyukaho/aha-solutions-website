@@ -3,7 +3,7 @@ import { howItWorksSteps } from '@/lib/data';
 
 export function HowItWorks() {
   return (
-    <section className="section">
+    <section id="how-it-works" className="section">
       <div className="wrap">
         <div style={{ textAlign: 'center', marginBottom: 56 }}>
           <Eyebrow style={{ marginBottom: 14 }}>HOW IT WORKS</Eyebrow>

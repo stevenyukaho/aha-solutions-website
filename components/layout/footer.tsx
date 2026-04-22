@@ -1,5 +1,4 @@
 import Image from 'next/image';
-import { NewsletterForm } from './newsletter-form';
 
 interface NavItem {
   label: string;
@@ -69,9 +68,6 @@ const NAV_SECTIONS: NavSection[] = [
     title: 'Resources',
     items: [
       { label: 'Case Studies', href: '/case-studies' },
-      { label: 'Blog', href: '#', disabled: true },
-      { label: 'Guides', href: '#', disabled: true },
-      { label: 'Templates', href: '#', disabled: true },
     ],
   },
   {
@@ -80,8 +76,7 @@ const NAV_SECTIONS: NavSection[] = [
       { label: 'Book a Call', href: '/book' },
       { label: 'About', href: '/about' },
       { label: 'Our Process', href: '/about' },
-      { label: 'Careers', href: '#', disabled: true },
-      { label: 'Contact', href: '#', disabled: true },
+      { label: 'Contact', href: '/book', disabled: false },
     ],
   },
 ];
@@ -104,7 +99,7 @@ export function Footer() {
           className="footer-grid"
           style={{
             display: 'grid',
-            gridTemplateColumns: '1.4fr 1fr 1fr 1fr 1.4fr',
+            gridTemplateColumns: '1.4fr 1fr 1fr 1fr',
             gap: 40,
             marginBottom: 48,
           }}
@@ -195,24 +190,6 @@ export function Footer() {
             </div>
           ))}
 
-          {/* Newsletter */}
-          <div>
-            <div
-              className="mono"
-              style={{
-                fontSize: 10,
-                letterSpacing: 1.4,
-                color: 'var(--text-3)',
-                marginBottom: 12,
-              }}
-            >
-              GET SYSTEM-BUILDING INSIGHTS
-            </div>
-            <p style={{ fontSize: 12, color: 'var(--text-3)', marginBottom: 14 }}>
-              No spam. Just practical automation tips.
-            </p>
-            <NewsletterForm />
-          </div>
         </div>
 
         {/* Contact row */}
@@ -258,8 +235,8 @@ export function Footer() {
         >
           <span>© 2026 AHA Solutions Inc. All rights reserved.</span>
           <div style={{ display: 'flex', gap: 20 }}>
-            <span>Privacy Policy</span>
-            <span>Terms of Service</span>
+            <a href="https://ahasolutions.ca/privacy-policy" target="_blank" rel="noopener noreferrer" style={{ fontSize: 11, color: 'var(--text-3)' }}>Privacy Policy</a>
+            <a href="https://ahasolutions.ca/terms-and-conditions" target="_blank" rel="noopener noreferrer" style={{ fontSize: 11, color: 'var(--text-3)' }}>Terms &amp; Conditions</a>
           </div>
         </div>
       </div>
