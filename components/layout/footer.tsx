@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { NewsletterForm } from './newsletter-form';
 
 interface NavItem {
@@ -110,23 +111,14 @@ export function Footer() {
         >
           {/* Brand */}
           <div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 18 }}>
-              <div
-                style={{
-                  width: 34,
-                  height: 34,
-                  borderRadius: 10,
-                  background: 'var(--accent)',
-                  color: 'var(--accent-ink)',
-                  display: 'grid',
-                  placeItems: 'center',
-                  fontWeight: 700,
-                  fontSize: 14,
-                }}
-              >
-                A
-              </div>
-              <span style={{ fontWeight: 600 }}>AHA Solutions</span>
+            <div style={{ marginBottom: 18 }}>
+              <Image
+                src="/aha-logo-full.png"
+                alt="AHA Solutions"
+                width={140}
+                height={37}
+                style={{ filter: 'invert(1)', mixBlendMode: 'screen' }}
+              />
             </div>
             <p
               style={{

@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import { BtnPrimary } from '@/components/primitives/btn-primary';
 import { Icon } from '@/components/primitives/icon';
@@ -26,31 +27,14 @@ export function Nav() {
             color: 'inherit',
           }}
         >
-          <div
-            style={{
-              width: 34,
-              height: 34,
-              borderRadius: 10,
-              background: 'var(--accent)',
-              color: 'var(--accent-ink)',
-              display: 'grid',
-              placeItems: 'center',
-              fontWeight: 700,
-              fontSize: 14,
-              letterSpacing: -0.5,
-            }}
-          >
-            A
-          </div>
-          <div style={{ display: 'flex', flexDirection: 'column', lineHeight: 1 }}>
-            <span style={{ fontWeight: 600, fontSize: 14 }}>AHA</span>
-            <span
-              className="mono"
-              style={{ fontSize: 9, color: 'var(--text-3)', letterSpacing: 1.4, marginTop: 2 }}
-            >
-              SOLUTIONS
-            </span>
-          </div>
+          <Image
+            src="/aha-logo-full.png"
+            alt="AHA Solutions"
+            width={160}
+            height={43}
+            style={{ filter: 'invert(1)', mixBlendMode: 'screen' }}
+            priority
+          />
         </Link>
       </div>
 
