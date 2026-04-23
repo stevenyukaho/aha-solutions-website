@@ -1,9 +1,12 @@
 import { Icon } from '@/components/primitives';
 import { BtnPrimary } from '@/components/primitives';
+import { HeroBackground } from '@/components/home/hero-background';
 
 export function AboutHero() {
   return (
-    <section style={{ padding: '72px 0 48px', maxWidth: 880 }}>
+    <section style={{ position: 'relative', overflow: 'hidden', padding: '72px 0 48px' }}>
+      <HeroBackground />
+      <div className="wrap" style={{ position: 'relative', zIndex: 1, maxWidth: 880 }}>
       <div className="mono" style={{ fontSize: 11, letterSpacing: 2, color: 'var(--accent)', marginBottom: 20 }}>
         ABOUT AHA SOLUTIONS
       </div>
@@ -28,6 +31,7 @@ export function AboutHero() {
       </div>
       <div style={{ marginTop: 10, fontSize: 12.5, color: 'var(--text-3)', fontStyle: 'italic' }}>
         Free 30-min audit. No pitch. No pressure.
+      </div>
       </div>
     </section>
   );

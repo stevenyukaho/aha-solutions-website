@@ -15,8 +15,9 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
   return (
-    <div className="wrap">
+    <>
       <AboutHero />
+      <div className="wrap">
       <ShiftSection />
       <WhatAndHow />
       <AboutFounder />
@@ -24,6 +25,7 @@ export default function AboutPage() {
       <AboutProofStrip />
       <WhoThisIsFor />
       <AboutFinalCTA />
-    </div>
+      </div>
+    </>
   );
 }

@@ -9,9 +9,11 @@ export const metadata: Metadata = {
 
 export default function CaseStudiesPage() {
   return (
-    <div className="wrap">
+    <>
       <CasesHero />
-      <CasesRunway />
-    </div>
+      <div className="wrap">
+        <CasesRunway />
+      </div>
+    </>
   );
 }

@@ -36,9 +36,7 @@ export default function SystemsPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
-      <div className="wrap">
-        <SystemsHero />
-      </div>
+      <SystemsHero />
       <SystemsNav />
       <SystemBlock {...systemBlocks[0]} />
       <SystemBlock {...systemBlocks[1]} />

@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Eyebrow, Icon } from '@/components/primitives';
 import { BookingEmbed } from '@/components/book/booking-embed';
 import { BookingFAQ } from '@/components/book/booking-faq';
+import { HeroBackground } from '@/components/home/hero-background';
 
 export const metadata: Metadata = {
   title: 'Book a Free Workflow Audit',
@@ -43,24 +44,12 @@ export default function BookPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
-      <section className="section" style={{ background: 'var(--bg)', paddingBottom: 32 }}>
-        {/* Hero header with centered layout + radial glow */}
-        <div className="book-hero" style={{ maxWidth: 1000, margin: '0 auto', padding: '0 24px', textAlign: 'center', position: 'relative' }}>
+      <section className="section" style={{ background: 'var(--bg)', paddingBottom: 32, position: 'relative', overflow: 'hidden' }}>
+        <HeroBackground />
+        {/* Hero header with centered layout */}
+        <div className="book-hero" style={{ maxWidth: 1000, margin: '0 auto', padding: '0 24px', textAlign: 'center', position: 'relative', zIndex: 1 }}>
 
-          {/* Radial glow backdrop */}
-          <div style={{
-            position: 'absolute',
-            top: '-60px',
-            left: '50%',
-            transform: 'translateX(-50%)',
-            width: '700px',
-            height: '400px',
-            background: 'radial-gradient(ellipse at center, rgba(245,208,0,0.06) 0%, transparent 70%)',
-            pointerEvents: 'none',
-            zIndex: 0,
-          }} />
-
-          <div style={{ position: 'relative', zIndex: 1 }}>
+          <div>
             {/* 1. Eyebrow with accent bar */}
             <div style={{ display: 'inline-flex', alignItems: 'center', gap: 10, marginBottom: 24 }}>
               <span style={{ width: 20, height: 1, background: 'var(--accent)', display: 'block' }} />

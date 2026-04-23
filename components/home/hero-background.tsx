@@ -50,7 +50,7 @@ void main() {
     else if (i == 2) beamColor = COL_YELLOW;
     else beamColor = mix(COL_PURPLE, COL_BLUE, 0.5);
 
-    color += beamColor * intensity * 0.35;
+    color += beamColor * intensity * 0.55;
   }
 
   float vignette = 1.0 - length((uv - 0.5) * vec2(1.0, 1.2)) * 0.3;
@@ -250,9 +250,9 @@ export function HeroBackground({ enabled = true }: HeroBackgroundProps) {
     zIndex: 0,
     pointerEvents: 'none',
     background: [
-      'radial-gradient(ellipse 60% 60% at 20% 50%, rgba(184,156,247,0.15), transparent 70%)',
-      'radial-gradient(ellipse 50% 50% at 50% 40%, rgba(122,183,255,0.12), transparent 65%)',
-      'radial-gradient(ellipse 45% 40% at 80% 50%, rgba(245,208,0,0.10), transparent 55%)',
+      'radial-gradient(ellipse 60% 60% at 20% 50%, rgba(184,156,247,0.20), transparent 70%)',
+      'radial-gradient(ellipse 50% 50% at 50% 40%, rgba(122,183,255,0.16), transparent 65%)',
+      'radial-gradient(ellipse 45% 40% at 80% 50%, rgba(245,208,0,0.14), transparent 55%)',
     ].join(', '),
   };
 

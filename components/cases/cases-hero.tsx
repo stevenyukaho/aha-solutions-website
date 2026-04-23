@@ -1,5 +1,6 @@
 import { Icon } from '@/components/primitives';
 import { casesHeroStats } from '@/lib/data';
+import { HeroBackground } from '@/components/home/hero-background';
 
 function InlineTag({ children, accent }: { children: React.ReactNode; accent?: boolean }) {
   return (
@@ -12,7 +13,9 @@ function InlineTag({ children, accent }: { children: React.ReactNode; accent?: b
 
 export function CasesHero() {
   return (
-    <section style={{ padding: '56px 0 40px' }}>
+    <section style={{ position: 'relative', overflow: 'hidden', padding: '56px 0 40px' }}>
+      <HeroBackground />
+      <div className="wrap" style={{ position: 'relative', zIndex: 1 }}>
       <div className="mono" style={{ fontSize: 11, letterSpacing: 2, color: 'var(--accent)', marginBottom: 20 }}>CASE STUDIES</div>
       <div className="cases-hero-grid" style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1fr) minmax(320px, 0.95fr)', gap: 48, alignItems: 'start' }}>
         <div style={{ minWidth: 0 }}>
@@ -43,6 +46,7 @@ export function CasesHero() {
             ))}
           </div>
         </div>
+      </div>
       </div>
     </section>
   );
