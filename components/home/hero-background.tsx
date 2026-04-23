@@ -22,26 +22,26 @@ const vec3 COL_BG     = vec3(0.043, 0.043, 0.051);
 
 void main() {
   vec2 uv = gl_FragCoord.xy / u_resolution;
-  vec2 mouse = (u_mouse - 0.5) * 0.15;
+  vec2 mouse = (u_mouse - 0.5) * 0.2;
   vec3 color = COL_BG;
 
   for (int i = 0; i < 4; i++) {
     float fi = float(i);
-    float speed = 0.08 + fi * 0.02;
+    float speed = 0.06 + fi * 0.015;
     float phase = fi * 1.57;
 
-    float cx = 0.2 + fi * 0.2
-             + sin(u_time * speed + phase) * 0.08
-             + mouse.x * (0.5 + fi * 0.3);
+    float cx = 0.15 + fi * 0.22
+             + sin(u_time * speed + phase) * 0.12
+             + mouse.x * (0.4 + fi * 0.25);
 
-    float wave = sin(uv.y * 6.0 + u_time * (0.15 + fi * 0.05) + fi * 2.0) * 0.03
-               + sin(uv.y * 12.0 - u_time * 0.1 + fi) * 0.01;
+    float wave = sin(uv.y * 4.0 + u_time * (0.12 + fi * 0.04) + fi * 2.0) * 0.05
+               + sin(uv.y * 8.0 - u_time * 0.08 + fi) * 0.02;
 
-    float x = uv.x - cx + wave + mouse.y * 0.02;
-    float width = 0.06 + sin(u_time * 0.05 + fi) * 0.02;
+    float x = uv.x - cx + wave + mouse.y * 0.03;
+    float width = 0.10 + sin(u_time * 0.04 + fi) * 0.03;
     float intensity = exp(-x * x / (2.0 * width * width));
 
-    float vfade = smoothstep(0.0, 0.3, uv.y) * smoothstep(1.0, 0.5, uv.y);
+    float vfade = smoothstep(0.0, 0.15, uv.y) * smoothstep(1.0, 0.2, uv.y);
     intensity *= vfade;
 
     vec3 beamColor;
@@ -50,10 +50,10 @@ void main() {
     else if (i == 2) beamColor = COL_YELLOW;
     else beamColor = mix(COL_PURPLE, COL_BLUE, 0.5);
 
-    color += beamColor * intensity * 0.12;
+    color += beamColor * intensity * 0.35;
   }
 
-  float vignette = 1.0 - length((uv - 0.5) * vec2(1.2, 1.6)) * 0.4;
+  float vignette = 1.0 - length((uv - 0.5) * vec2(1.0, 1.2)) * 0.3;
   color *= vignette;
 
   gl_FragColor = vec4(color, 1.0);
@@ -250,9 +250,9 @@ export function HeroBackground({ enabled = true }: HeroBackgroundProps) {
     zIndex: 0,
     pointerEvents: 'none',
     background: [
-      'radial-gradient(ellipse 60% 50% at 25% 40%, rgba(184,156,247,0.08), transparent 70%)',
-      'radial-gradient(ellipse 50% 40% at 55% 35%, rgba(122,183,255,0.06), transparent 60%)',
-      'radial-gradient(ellipse 40% 30% at 75% 45%, rgba(245,208,0,0.05), transparent 50%)',
+      'radial-gradient(ellipse 60% 60% at 20% 50%, rgba(184,156,247,0.15), transparent 70%)',
+      'radial-gradient(ellipse 50% 50% at 50% 40%, rgba(122,183,255,0.12), transparent 65%)',
+      'radial-gradient(ellipse 45% 40% at 80% 50%, rgba(245,208,0,0.10), transparent 55%)',
     ].join(', '),
   };
 
