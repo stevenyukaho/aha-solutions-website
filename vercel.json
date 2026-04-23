@@ -1,0 +1,17 @@
+{
+  "redirects": [
+    { "source": "/home/", "destination": "/", "permanent": true },
+    { "source": "/home", "destination": "/", "permanent": true },
+    { "source": "/privacy-policy/", "destination": "/privacy-policy", "permanent": true },
+    { "source": "/terms-and-conditions/", "destination": "/terms-and-conditions", "permanent": true },
+    { "source": "/demo-leftclick-ai/", "destination": "/", "permanent": true },
+    { "source": "/demo-leftclick-ai", "destination": "/", "permanent": true },
+    { "source": "/2025/:path*", "destination": "/", "permanent": true },
+    { "source": "/category/:path*", "destination": "/", "permanent": true },
+    { "source": "/author/:path*", "destination": "/about", "permanent": true },
+    { "source": "/feed/:path*", "destination": "/", "permanent": true },
+    { "source": "/wp-admin/:path*", "destination": "/", "permanent": true },
+    { "source": "/wp-login.php", "destination": "/", "permanent": true },
+    { "source": "/wp-content/:path*", "destination": "/", "permanent": true }
+  ]
+}
