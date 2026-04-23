@@ -244,7 +244,7 @@ export const founderStats: StatItem[] = [
 
 // LogosStrip (from sections.jsx)
 export const logosData: string[] = [
-  'GoHighLevel', 'Airtable', 'Make', 'N8N', 'Claude', 'WordPress', 'Wix', 'HeyGen', 'Zapier',
+  'Airtable', 'Make', 'N8N', 'Claude', 'Gemini', 'ChatGPT', 'Codex', 'Cursor', 'Next.js', 'Canva', 'WordPress', 'Wix', 'HeyGen', 'Zapier',
 ];
 
 // ============================================================
