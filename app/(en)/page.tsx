@@ -23,9 +23,7 @@ export default async function HomePage() {
   return (
     <>
       {/* 1. HOOK — what this is */}
-      <div className="wrap">
-        <Hero dict={dict.home.hero} heroDiagramLabels={data.heroDiagram} />
-      </div>
+      <Hero dict={dict.home.hero} heroDiagramLabels={data.heroDiagram} />
 
       {/* 2. CLARITY — what you get */}
       <LogosStrip dict={dict.home.logosStrip} />

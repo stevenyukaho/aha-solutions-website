@@ -1,5 +1,6 @@
 import { BtnPrimary, BtnGhost } from '@/components/primitives';
 import { HeroDiagram } from './hero-diagram';
+import { HeroBackground } from './hero-background';
 import type { HeroDict, CommonDict } from '@/lib/dictionaries/types';
 import type { HeroDiagramLabels } from '@/lib/data-i18n';
 
@@ -26,9 +27,11 @@ const defaultDict: HeroDict = {
 
 export function Hero({ dict = defaultDict, heroDiagramLabels }: HeroProps) {
   return (
-    <section style={{ padding: '24px 0 64px' }}>
-      <div className="hero-grid" style={{ display: 'grid', gridTemplateColumns: '1.05fr 1fr', gap: 48, alignItems: 'center', marginTop: 56 }}>
-        <div>
+    <section style={{ position: 'relative', overflow: 'hidden', padding: '24px 0 64px' }}>
+      <HeroBackground />
+      <div className="wrap" style={{ position: 'relative', zIndex: 1 }}>
+        <div className="hero-grid" style={{ display: 'grid', gridTemplateColumns: '1.05fr 1fr', gap: 48, alignItems: 'center', marginTop: 56 }}>
+          <div>
           <div className="chip" style={{ marginBottom: 24 }}>
             <span className="dot" />
             {dict.chip}
@@ -56,7 +59,8 @@ export function Hero({ dict = defaultDict, heroDiagramLabels }: HeroProps) {
           </div>
         </div>
 
-        <HeroDiagram labels={heroDiagramLabels} />
+          <HeroDiagram labels={heroDiagramLabels} />
+        </div>
       </div>
     </section>
   );
