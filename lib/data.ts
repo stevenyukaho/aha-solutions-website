@@ -169,6 +169,39 @@ export const caseStudyAfter: string[] = [
   'More bookings. Higher conversion.',
 ];
 
+// Testimonials
+export interface Testimonial {
+  quote: string;
+  name: string;
+  title: string;
+  company: string;
+  initial: string;
+}
+
+export const testimonials: Testimonial[] = [
+  {
+    quote: 'Our content creation costs have dropped significantly. The system generates multilingual content while maintaining our brand voice, and the AI templates for educational consulting enhance our workflow efficiency.',
+    name: 'Maggie Chan',
+    title: 'CEO',
+    company: 'Maple Study Link',
+    initial: 'M',
+  },
+  {
+    quote: 'The AI system delivered immediate results for our local marketing efforts. With automated SEO optimization and multi-platform content distribution, we\'re reaching more potential customers than ever.',
+    name: 'Kenet Chan',
+    title: 'Founder',
+    company: 'Tint Wrap Auto',
+    initial: 'K',
+  },
+  {
+    quote: 'The system has transformed our lead generation workflow completely. What used to take days now happens automatically across all our platforms.',
+    name: 'Benjamin Chau',
+    title: 'Business Owner',
+    company: 'Wine Century HK',
+    initial: 'B',
+  },
+];
+
 // HowItWorks steps (from sections.jsx)
 export interface HowItWorksStep {
   n: string;
@@ -210,7 +243,9 @@ export const founderStats: StatItem[] = [
 ];
 
 // LogosStrip (from sections.jsx)
-export const logosData: string[] = ['Education', 'Automotive', 'Retail & E-commerce', 'Professional Services'];
+export const logosData: string[] = [
+  'GoHighLevel', 'Airtable', 'Make', 'N8N', 'Claude', 'WordPress', 'Wix', 'HeyGen', 'Zapier',
+];
 
 // ============================================================
 // SYSTEMS PAGE DATA (from hifi/systems-page.jsx)

@@ -1,5 +1,11 @@
-import { Icon, Eyebrow, BtnGhost } from '@/components/primitives';
-import { caseStudyBefore, caseStudyAfter } from '@/lib/data';
+import { Icon, Eyebrow } from '@/components/primitives';
+import { caseStudyBefore, caseStudyAfter, testimonials } from '@/lib/data';
+
+const avatarGradients: Record<string, string> = {
+  M: 'linear-gradient(135deg, #6a5acd, #8a7fea)',
+  K: 'linear-gradient(135deg, #5a8acd, #7fb8ea)',
+  B: 'linear-gradient(135deg, #cd5a6a, #ea7f8a)',
+};
 
 export function CaseStudy() {
   return (
@@ -46,22 +52,40 @@ export function CaseStudy() {
           </div>
         </div>
 
-        <div className="case-study-bottom" style={{ display: 'grid', gridTemplateColumns: '1.4fr 1fr 1fr', gap: 24, marginTop: 28, alignItems: 'center' }}>
-          <div>
-            <BtnGhost size="sm">View full case study</BtnGhost>
-          </div>
-          <div />
-          <div className="card" style={{ padding: 20, borderLeft: '3px solid var(--accent)' }}>
-            <div className="serif" style={{ fontSize: 18, lineHeight: 1.3, fontStyle: 'italic', marginBottom: 14 }}>
-              &ldquo;Our content creation costs have dropped significantly. The system generates multilingual content while maintaining our brand voice.&rdquo;
-            </div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-              <div style={{ width: 36, height: 36, borderRadius: 999, background: 'linear-gradient(135deg, #6a5acd, #8a7fea)', display: 'grid', placeItems: 'center', fontSize: 13, fontWeight: 600 }}>C</div>
-              <div>
-                <div style={{ fontSize: 12, fontWeight: 600 }}>CEO</div>
-                <div className="mono" style={{ fontSize: 10, color: 'var(--text-3)', letterSpacing: 1 }}>EDUCATION CONSULTING COMPANY</div>
+        {/* Testimonials */}
+        <div style={{ marginTop: 80 }}>
+          <Eyebrow style={{ marginBottom: 12 }}>TESTIMONIALS</Eyebrow>
+          <h2 style={{ marginBottom: 32 }}>Real results from real founders</h2>
+
+          <div className="testimonials-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 20 }}>
+            {testimonials.map((t) => (
+              <div key={t.name} className="card" style={{ padding: 28, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+                <div className="serif" style={{ fontSize: 16, lineHeight: 1.5, fontStyle: 'italic', color: 'var(--text-2)', marginBottom: 24 }}>
+                  &ldquo;{t.quote}&rdquo;
+                </div>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+                  <div style={{
+                    width: 40,
+                    height: 40,
+                    borderRadius: 999,
+                    background: avatarGradients[t.initial] ?? 'linear-gradient(135deg, #6a5acd, #8a7fea)',
+                    display: 'grid',
+                    placeItems: 'center',
+                    fontSize: 14,
+                    fontWeight: 600,
+                    color: 'white',
+                  }}>
+                    {t.initial}
+                  </div>
+                  <div>
+                    <div style={{ fontSize: 13, fontWeight: 600 }}>{t.name}</div>
+                    <div className="mono" style={{ fontSize: 10, color: 'var(--text-3)', letterSpacing: 1 }}>
+                      {t.title.toUpperCase()}, {t.company.toUpperCase()}
+                    </div>
+                  </div>
+                </div>
               </div>
-            </div>
+            ))}
           </div>
         </div>
       </div>

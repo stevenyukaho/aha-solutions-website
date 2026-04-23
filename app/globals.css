@@ -184,6 +184,9 @@ footer { padding: 80px 0 40px; border-top: 1px solid var(--line); }
   .case-study-grid { grid-template-columns: 1fr !important; }
   .case-study-bottom { grid-template-columns: 1fr !important; }
 
+  /* Testimonials: 3-col → 1-col */
+  .testimonials-grid { grid-template-columns: 1fr !important; }
+
   /* Founder Block: 2-col → 1-col */
   .founder-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
 
