@@ -17,6 +17,7 @@ export function MobileMenu({ links, ctaHref, ctaLabel }: MobileMenuProps) {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
   const hamburgerRef = useRef<HTMLButtonElement>(null);
+  const overlayRef = useRef<HTMLDivElement>(null);
 
   // Close menu on route change
   useEffect(() => {
@@ -50,16 +51,33 @@ export function MobileMenu({ links, ctaHref, ctaLabel }: MobileMenuProps) {
   }, [isOpen]);
 
   // Focus management via inert
+  const wasOpenRef = useRef(false);
   useEffect(() => {
     const mainEl = document.querySelector('main');
-    if (!mainEl) return;
+    const navEl = hamburgerRef.current?.closest('nav');
 
     if (isOpen) {
-      mainEl.setAttribute('inert', '');
+      mainEl?.setAttribute('inert', '');
+      // Also inert nav siblings (logo, desktop links) so Tab stays in overlay
+      if (navEl) {
+        Array.from(navEl.children).forEach((child) => {
+          if (child !== hamburgerRef.current && child !== overlayRef.current) {
+            (child as HTMLElement).setAttribute('inert', '');
+          }
+        });
+      }
+      wasOpenRef.current = true;
     } else {
-      mainEl.removeAttribute('inert');
-      // Return focus to hamburger button on close
-      hamburgerRef.current?.focus();
+      mainEl?.removeAttribute('inert');
+      if (navEl) {
+        Array.from(navEl.children).forEach((child) => {
+          (child as HTMLElement).removeAttribute('inert');
+        });
+      }
+      if (wasOpenRef.current) {
+        hamburgerRef.current?.focus();
+        wasOpenRef.current = false;
+      }
     }
   }, [isOpen]);
 
@@ -77,7 +95,7 @@ export function MobileMenu({ links, ctaHref, ctaLabel }: MobileMenuProps) {
       <button
         ref={hamburgerRef}
         className="mobile-menu-toggle"
-        aria-label="Open menu"
+        aria-label={isOpen ? 'Close menu' : 'Open menu'}
         aria-expanded={isOpen}
         aria-controls="mobile-menu"
         onClick={openMenu}
@@ -99,12 +117,13 @@ export function MobileMenu({ links, ctaHref, ctaLabel }: MobileMenuProps) {
 
       {/* Full-screen overlay */}
       <div
+        ref={overlayRef}
         id="mobile-menu"
         className="mobile-menu-overlay"
         role="dialog"
         aria-modal="true"
         aria-label="Navigation menu"
-        {...(isOpen ? { 'data-open': '' } : {})}
+        {...(isOpen ? { 'data-open': '' } : { inert: true })}
       >
         {/* Close button */}
         <button
