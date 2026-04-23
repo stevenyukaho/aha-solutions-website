@@ -1,10 +1,12 @@
 import Image from 'next/image';
 import { Eyebrow } from '@/components/primitives';
-import { founderStats } from '@/lib/data';
+import { founderStats as defaultFounderStats } from '@/lib/data';
+import type { StatItem } from '@/lib/data';
 import type { FounderBlockDict } from '@/lib/dictionaries/types';
 
 interface FounderBlockProps {
   dict?: FounderBlockDict;
+  stats?: StatItem[];
 }
 
 const defaultDict: FounderBlockDict = {
@@ -14,7 +16,7 @@ const defaultDict: FounderBlockDict = {
   bio2: 'Now focused on helping SMB founders scale without complexity.',
 };
 
-export function FounderBlock({ dict = defaultDict }: FounderBlockProps) {
+export function FounderBlock({ dict = defaultDict, stats = defaultFounderStats }: FounderBlockProps) {
   return (
     <section className="section" style={{ background: 'var(--bg-2)' }}>
       <div className="wrap">
@@ -39,7 +41,7 @@ export function FounderBlock({ dict = defaultDict }: FounderBlockProps) {
               {dict.bio2}
             </p>
             <div style={{ display: 'flex', gap: 32, flexWrap: 'wrap', paddingTop: 24, borderTop: '1px solid var(--line)' }}>
-              {founderStats.map((s) => (
+              {stats.map((s) => (
                 <div key={s.l}>
                   <div style={{ fontSize: 26, fontWeight: 600, letterSpacing: -1, color: 'var(--accent)', lineHeight: 1 }}>{s.v}</div>
                   <div className="mono" style={{ fontSize: 10, color: 'var(--text-3)', marginTop: 6, letterSpacing: 1.2 }}>{s.l.toUpperCase()}</div>

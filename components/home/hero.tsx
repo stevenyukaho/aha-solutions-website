@@ -1,10 +1,12 @@
 import { BtnPrimary, BtnGhost } from '@/components/primitives';
 import { HeroDiagram } from './hero-diagram';
 import type { HeroDict, CommonDict } from '@/lib/dictionaries/types';
+import type { HeroDiagramLabels } from '@/lib/data-i18n';
 
 interface HeroProps {
   dict?: HeroDict;
   common?: CommonDict;
+  heroDiagramLabels?: HeroDiagramLabels;
 }
 
 const defaultDict: HeroDict = {
@@ -22,7 +24,7 @@ const defaultDict: HeroDict = {
   proof3: 'BUILT BY EX-CEO (PUBLIC CO.)',
 };
 
-export function Hero({ dict = defaultDict }: HeroProps) {
+export function Hero({ dict = defaultDict, heroDiagramLabels }: HeroProps) {
   return (
     <section style={{ padding: '24px 0 64px' }}>
       <div className="hero-grid" style={{ display: 'grid', gridTemplateColumns: '1.05fr 1fr', gap: 48, alignItems: 'center', marginTop: 56 }}>
@@ -54,7 +56,7 @@ export function Hero({ dict = defaultDict }: HeroProps) {
           </div>
         </div>
 
-        <HeroDiagram />
+        <HeroDiagram labels={heroDiagramLabels} />
       </div>
     </section>
   );

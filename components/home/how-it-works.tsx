@@ -1,9 +1,11 @@
 import { Icon, Eyebrow } from '@/components/primitives';
 import { howItWorksSteps } from '@/lib/data';
+import type { HowItWorksStep } from '@/lib/data';
 import type { HowItWorksDict } from '@/lib/dictionaries/types';
 
 interface HowItWorksProps {
   dict?: HowItWorksDict;
+  steps?: HowItWorksStep[];
 }
 
 const defaultDict: HowItWorksDict = {
@@ -14,7 +16,7 @@ const defaultDict: HowItWorksDict = {
   phaseRun: 'Run',
 };
 
-export function HowItWorks({ dict = defaultDict }: HowItWorksProps) {
+export function HowItWorks({ dict = defaultDict, steps = howItWorksSteps }: HowItWorksProps) {
   return (
     <section id="how-it-works" className="section">
       <div className="wrap">
@@ -30,7 +32,7 @@ export function HowItWorks({ dict = defaultDict }: HowItWorksProps) {
         </div>
 
         <div className="how-it-works-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 18 }}>
-          {howItWorksSteps.map((s) => (
+          {steps.map((s) => (
             <div key={s.n} className="card" style={{ padding: 32, position: 'relative', display: 'flex', flexDirection: 'column' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 24 }}>
                 <span className="mono" style={{ fontSize: 10, color: 'var(--text-3)', letterSpacing: 1.4 }}>{s.n}</span>

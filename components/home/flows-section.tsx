@@ -2,12 +2,13 @@
 
 import { useState } from 'react';
 import { Icon, Node, Arrow, Eyebrow } from '@/components/primitives';
-import { flowsData } from '@/lib/data';
-import type { FlowTabKey } from '@/lib/data';
+import { flowsData as defaultFlowsData } from '@/lib/data';
+import type { FlowTabKey, FlowTabConfig } from '@/lib/data';
 import type { FlowsSectionDict } from '@/lib/dictionaries/types';
 
 interface FlowsSectionProps {
   dict?: FlowsSectionDict;
+  flows?: Record<FlowTabKey, FlowTabConfig>;
 }
 
 const defaultDict: FlowsSectionDict = {
@@ -16,9 +17,9 @@ const defaultDict: FlowsSectionDict = {
   bottomMono: 'CLICK TABS TO EXPLORE · LIVE PROCESS DIAGRAMS',
 };
 
-export function FlowsSection({ dict = defaultDict }: FlowsSectionProps) {
+export function FlowsSection({ dict = defaultDict, flows = defaultFlowsData }: FlowsSectionProps) {
   const [tab, setTab] = useState<FlowTabKey>('lead');
-  const data = flowsData[tab];
+  const data = flows[tab];
 
   return (
     <section className="section" style={{ background: 'var(--bg-2)' }}>
@@ -29,7 +30,7 @@ export function FlowsSection({ dict = defaultDict }: FlowsSectionProps) {
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 40, flexWrap: 'wrap', gap: 16 }}>
           <h2>{dict.h2}</h2>
           <div className="tabs">
-            {(Object.entries(flowsData) as [FlowTabKey, typeof data][]).map(([k, v]) => (
+            {(Object.entries(flows) as [FlowTabKey, FlowTabConfig][]).map(([k, v]) => (
               <button key={k} onClick={() => setTab(k)} className={tab === k ? 'on' : ''}>
                 <Icon name={v.icon} size={12} /> {v.label}
               </button>

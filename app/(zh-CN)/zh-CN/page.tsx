@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { getDictionary } from '@/lib/dictionaries';
+import { getLocalizedData } from '@/lib/data-i18n';
 import { Hero } from '@/components/home/hero';
 import { MetricsStrip } from '@/components/home/metrics-strip';
 import { FiveSystems } from '@/components/home/five-systems';
@@ -17,26 +18,27 @@ export const metadata: Metadata = {
 
 export default async function ZhCNHomePage() {
   const dict = await getDictionary('zh-CN');
+  const data = getLocalizedData('zh-CN');
 
   return (
     <>
       {/* 1. HOOK — what this is */}
       <div className="wrap">
-        <Hero dict={dict.home.hero} common={dict.common} />
+        <Hero dict={dict.home.hero} common={dict.common} heroDiagramLabels={data.heroDiagram} />
       </div>
 
       {/* 2. CLARITY — what you get */}
       <LogosStrip dict={dict.home.logosStrip} />
-      <FiveSystems dict={dict.home.fiveSystems} />
-      <HowItWorks dict={dict.home.howItWorks} />
-      <FlowsSection dict={dict.home.flowsSection} />
+      <FiveSystems dict={dict.home.fiveSystems} cards={data.fiveSystemCards} />
+      <HowItWorks dict={dict.home.howItWorks} steps={data.howItWorksSteps} />
+      <FlowsSection dict={dict.home.flowsSection} flows={data.flowsData} />
 
       {/* 3. TRUST — proof */}
       <div className="wrap">
-        <MetricsStrip />
+        <MetricsStrip items={data.metricsItems} />
       </div>
-      <CaseStudy dict={dict.home.caseStudy} />
-      <FounderBlock dict={dict.home.founderBlock} />
+      <CaseStudy dict={dict.home.caseStudy} before={data.caseStudyBefore} after={data.caseStudyAfter} testimonials={data.testimonials} />
+      <FounderBlock dict={dict.home.founderBlock} stats={data.founderStats} />
 
       {/* 4. ACTION + 5. REASSURANCE */}
       <FinalCTA dict={dict.home.finalCta} common={dict.common} />

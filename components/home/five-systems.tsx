@@ -1,9 +1,11 @@
 import { Icon, Arrow, Eyebrow, BtnPrimary } from '@/components/primitives';
 import { fiveSystemCards } from '@/lib/data';
+import type { FiveSystemCard } from '@/lib/data';
 import type { FiveSystemsDict } from '@/lib/dictionaries/types';
 
 interface FiveSystemsProps {
   dict?: FiveSystemsDict;
+  cards?: FiveSystemCard[];
 }
 
 const defaultDict: FiveSystemsDict = {
@@ -12,7 +14,7 @@ const defaultDict: FiveSystemsDict = {
   cta: 'Book a free workflow audit',
 };
 
-export function FiveSystems({ dict = defaultDict }: FiveSystemsProps) {
+export function FiveSystems({ dict = defaultDict, cards = fiveSystemCards }: FiveSystemsProps) {
   return (
     <section className="section">
       <div className="wrap">
@@ -22,7 +24,7 @@ export function FiveSystems({ dict = defaultDict }: FiveSystemsProps) {
         </div>
 
         <div className="five-systems-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(5, minmax(0, 1fr))', gap: 14 }}>
-          {fiveSystemCards.map((c) => (
+          {cards.map((c) => (
             <div key={c.n} className="card sys-card" style={{ padding: 22, display: 'flex', flexDirection: 'column' }}>
               <div className="mono" style={{ fontSize: 10, color: 'var(--text-3)', letterSpacing: 1.4, marginBottom: 18 }}>{c.n}</div>
               <div style={{ fontSize: 16, fontWeight: 600, letterSpacing: -0.2, marginBottom: 8, lineHeight: 1.25, minHeight: 40 }}>{c.title}</div>

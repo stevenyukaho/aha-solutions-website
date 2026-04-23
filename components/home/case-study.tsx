@@ -1,9 +1,13 @@
 import { Icon, Eyebrow } from '@/components/primitives';
-import { caseStudyBefore, caseStudyAfter, testimonials } from '@/lib/data';
+import { caseStudyBefore, caseStudyAfter, testimonials as defaultTestimonials } from '@/lib/data';
+import type { Testimonial } from '@/lib/data';
 import type { CaseStudyDict } from '@/lib/dictionaries/types';
 
 interface CaseStudyProps {
   dict?: CaseStudyDict;
+  before?: string[];
+  after?: string[];
+  testimonials?: Testimonial[];
 }
 
 const defaultDict: CaseStudyDict = {
@@ -23,7 +27,7 @@ const avatarGradients: Record<string, string> = {
   B: 'linear-gradient(135deg, #cd5a6a, #ea7f8a)',
 };
 
-export function CaseStudy({ dict = defaultDict }: CaseStudyProps) {
+export function CaseStudy({ dict = defaultDict, before = caseStudyBefore, after = caseStudyAfter, testimonials = defaultTestimonials }: CaseStudyProps) {
   return (
     <section className="section">
       <div className="wrap">
@@ -35,7 +39,7 @@ export function CaseStudy({ dict = defaultDict }: CaseStudyProps) {
           <div className="card" style={{ padding: 20 }}>
             <div className="mono" style={{ fontSize: 10, letterSpacing: 1.4, color: 'var(--text-3)', marginBottom: 14 }}>{dict.beforeLabel}</div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
-              {caseStudyBefore.map((t) => (
+              {before.map((t) => (
                 <div key={t} style={{ display: 'flex', alignItems: 'center', gap: 10, fontSize: 13, color: 'var(--text-2)' }}>
                   <span style={{ width: 22, height: 22, borderRadius: 6, background: 'rgba(255,120,120,0.1)', color: '#ff9e9e', display: 'grid', placeItems: 'center' }}>
                     <Icon name="x" size={12} />
@@ -56,7 +60,7 @@ export function CaseStudy({ dict = defaultDict }: CaseStudyProps) {
           <div className="card" style={{ padding: 20, borderColor: 'rgba(245,208,0,0.35)', background: 'linear-gradient(180deg, rgba(245,208,0,0.06), transparent)' }}>
             <div className="mono" style={{ fontSize: 10, letterSpacing: 1.4, color: 'var(--accent)', marginBottom: 14 }}>{dict.afterLabel}</div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
-              {caseStudyAfter.map((t) => (
+              {after.map((t) => (
                 <div key={t} style={{ display: 'flex', alignItems: 'center', gap: 10, fontSize: 13, color: 'var(--text)' }}>
                   <span style={{ width: 22, height: 22, borderRadius: 6, background: 'rgba(125,224,143,0.12)', color: 'var(--success)', display: 'grid', placeItems: 'center' }}>
                     <Icon name="check" size={12} />
