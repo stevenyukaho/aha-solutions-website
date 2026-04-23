@@ -4,8 +4,19 @@ import { useState } from 'react';
 import { Icon, Node, Arrow, Eyebrow } from '@/components/primitives';
 import { flowsData } from '@/lib/data';
 import type { FlowTabKey } from '@/lib/data';
+import type { FlowsSectionDict } from '@/lib/dictionaries/types';
 
-export function FlowsSection() {
+interface FlowsSectionProps {
+  dict?: FlowsSectionDict;
+}
+
+const defaultDict: FlowsSectionDict = {
+  eyebrow: 'A LOOK INSIDE',
+  h2: 'What your system actually looks like',
+  bottomMono: 'CLICK TABS TO EXPLORE · LIVE PROCESS DIAGRAMS',
+};
+
+export function FlowsSection({ dict = defaultDict }: FlowsSectionProps) {
   const [tab, setTab] = useState<FlowTabKey>('lead');
   const data = flowsData[tab];
 
@@ -13,10 +24,10 @@ export function FlowsSection() {
     <section className="section" style={{ background: 'var(--bg-2)' }}>
       <div className="wrap">
         <div style={{ textAlign: 'center', marginBottom: 10 }}>
-          <Eyebrow>A LOOK INSIDE</Eyebrow>
+          <Eyebrow>{dict.eyebrow}</Eyebrow>
         </div>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 40, flexWrap: 'wrap', gap: 16 }}>
-          <h2>What your system actually looks like</h2>
+          <h2>{dict.h2}</h2>
           <div className="tabs">
             {(Object.entries(flowsData) as [FlowTabKey, typeof data][]).map(([k, v]) => (
               <button key={k} onClick={() => setTab(k)} className={tab === k ? 'on' : ''}>
@@ -40,7 +51,7 @@ export function FlowsSection() {
         </div>
 
         <div className="mono" style={{ textAlign: 'center', marginTop: 20, fontSize: 10.5, letterSpacing: 1.4, color: 'var(--text-3)' }}>
-          CLICK TABS TO EXPLORE · LIVE PROCESS DIAGRAMS
+          {dict.bottomMono}
         </div>
       </div>
     </section>

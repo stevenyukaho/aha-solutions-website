@@ -2,8 +2,20 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { BtnPrimary } from '@/components/primitives/btn-primary';
 import { BOOKING_URL } from '@/lib/constants';
+import { getDictionary } from '@/lib/dictionaries';
+import { getLocalizedPath } from '@/lib/i18n';
+import type { Locale } from '@/lib/i18n';
+import type { Dictionary } from '@/lib/dictionaries/types';
+import { LanguageSwitcher } from './language-switcher';
 
-export function Nav() {
+interface NavProps {
+  locale?: Locale;
+  dict?: Dictionary;
+}
+
+export async function Nav({ locale = 'en', dict }: NavProps) {
+  const resolvedDict = dict ?? (await getDictionary(locale));
+
   return (
     <nav
       style={{
@@ -17,7 +29,7 @@ export function Nav() {
       {/* Logo */}
       <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
         <Link
-          href="/"
+          href={getLocalizedPath('/', locale)}
           style={{
             display: 'flex',
             alignItems: 'center',
@@ -42,21 +54,24 @@ export function Nav() {
         className="hide-md nav-links"
         style={{ gap: 28, fontSize: 13, color: 'var(--text-2)' }}
       >
-        <Link href="/systems" style={{ color: 'var(--text-2)', textDecoration: 'none' }}>
-          Systems
+        <Link href={getLocalizedPath('/systems', locale)} style={{ color: 'var(--text-2)', textDecoration: 'none' }}>
+          {resolvedDict.nav.systems}
         </Link>
-        <Link href="/case-studies" style={{ color: 'var(--text-2)', textDecoration: 'none' }}>
-          Case Studies
+        <Link href={getLocalizedPath('/case-studies', locale)} style={{ color: 'var(--text-2)', textDecoration: 'none' }}>
+          {resolvedDict.nav.caseStudies}
         </Link>
-        <Link href="/about" style={{ color: 'var(--text-2)', textDecoration: 'none' }}>
-          About
+        <Link href={getLocalizedPath('/about', locale)} style={{ color: 'var(--text-2)', textDecoration: 'none' }}>
+          {resolvedDict.nav.about}
         </Link>
       </div>
 
-      {/* CTA */}
-      <BtnPrimary href={BOOKING_URL} size="sm">
-        Book a free workflow audit
-      </BtnPrimary>
+      {/* Language Switcher + CTA */}
+      <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
+        <LanguageSwitcher />
+        <BtnPrimary href={getLocalizedPath(BOOKING_URL, locale)} size="sm">
+          {resolvedDict.nav.cta}
+        </BtnPrimary>
+      </div>
     </nav>
   );
 }

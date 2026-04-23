@@ -1,5 +1,21 @@
 import { Icon, Eyebrow } from '@/components/primitives';
 import { caseStudyBefore, caseStudyAfter, testimonials } from '@/lib/data';
+import type { CaseStudyDict } from '@/lib/dictionaries/types';
+
+interface CaseStudyProps {
+  dict?: CaseStudyDict;
+}
+
+const defaultDict: CaseStudyDict = {
+  eyebrow: 'CASE STUDY',
+  h2: 'Response time dropped 80%. They stopped hiring and started closing.',
+  beforeLabel: 'BEFORE',
+  afterLabel: 'AFTER',
+  stat: '80%',
+  statLabel: 'FASTER RESPONSE TIME',
+  testimonialsEyebrow: 'TESTIMONIALS',
+  testimonialsH2: 'Real results from real founders',
+};
 
 const avatarGradients: Record<string, string> = {
   M: 'linear-gradient(135deg, #6a5acd, #8a7fea)',
@@ -7,17 +23,17 @@ const avatarGradients: Record<string, string> = {
   B: 'linear-gradient(135deg, #cd5a6a, #ea7f8a)',
 };
 
-export function CaseStudy() {
+export function CaseStudy({ dict = defaultDict }: CaseStudyProps) {
   return (
     <section className="section">
       <div className="wrap">
-        <Eyebrow style={{ marginBottom: 12 }}>CASE STUDY</Eyebrow>
-        <h2 style={{ marginBottom: 32, maxWidth: 820 }}>Response time dropped 80%. They stopped hiring and started closing.</h2>
+        <Eyebrow style={{ marginBottom: 12 }}>{dict.eyebrow}</Eyebrow>
+        <h2 style={{ marginBottom: 32, maxWidth: 820 }}>{dict.h2}</h2>
 
         <div className="case-study-grid" style={{ display: 'grid', gridTemplateColumns: '1.4fr 1fr 1fr', gap: 24, alignItems: 'center' }}>
           {/* Before */}
           <div className="card" style={{ padding: 20 }}>
-            <div className="mono" style={{ fontSize: 10, letterSpacing: 1.4, color: 'var(--text-3)', marginBottom: 14 }}>BEFORE</div>
+            <div className="mono" style={{ fontSize: 10, letterSpacing: 1.4, color: 'var(--text-3)', marginBottom: 14 }}>{dict.beforeLabel}</div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
               {caseStudyBefore.map((t) => (
                 <div key={t} style={{ display: 'flex', alignItems: 'center', gap: 10, fontSize: 13, color: 'var(--text-2)' }}>
@@ -32,13 +48,13 @@ export function CaseStudy() {
 
           {/* Stat */}
           <div style={{ textAlign: 'center' }}>
-            <div style={{ fontSize: 56, fontWeight: 700, color: 'var(--accent)', letterSpacing: -2, lineHeight: 0.9 }}>80%</div>
-            <div className="mono" style={{ fontSize: 10, letterSpacing: 1.4, color: 'var(--text-3)', marginTop: 8 }}>FASTER RESPONSE TIME</div>
+            <div style={{ fontSize: 56, fontWeight: 700, color: 'var(--accent)', letterSpacing: -2, lineHeight: 0.9 }}>{dict.stat}</div>
+            <div className="mono" style={{ fontSize: 10, letterSpacing: 1.4, color: 'var(--text-3)', marginTop: 8 }}>{dict.statLabel}</div>
           </div>
 
           {/* After */}
           <div className="card" style={{ padding: 20, borderColor: 'rgba(245,208,0,0.35)', background: 'linear-gradient(180deg, rgba(245,208,0,0.06), transparent)' }}>
-            <div className="mono" style={{ fontSize: 10, letterSpacing: 1.4, color: 'var(--accent)', marginBottom: 14 }}>AFTER</div>
+            <div className="mono" style={{ fontSize: 10, letterSpacing: 1.4, color: 'var(--accent)', marginBottom: 14 }}>{dict.afterLabel}</div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
               {caseStudyAfter.map((t) => (
                 <div key={t} style={{ display: 'flex', alignItems: 'center', gap: 10, fontSize: 13, color: 'var(--text)' }}>
@@ -54,8 +70,8 @@ export function CaseStudy() {
 
         {/* Testimonials */}
         <div style={{ marginTop: 80 }}>
-          <Eyebrow style={{ marginBottom: 12 }}>TESTIMONIALS</Eyebrow>
-          <h2 style={{ marginBottom: 32 }}>Real results from real founders</h2>
+          <Eyebrow style={{ marginBottom: 12 }}>{dict.testimonialsEyebrow}</Eyebrow>
+          <h2 style={{ marginBottom: 32 }}>{dict.testimonialsH2}</h2>
 
           <div className="testimonials-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 20 }}>
             {testimonials.map((t) => (

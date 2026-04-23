@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { getDictionary } from '@/lib/dictionaries';
 import { Hero } from '@/components/home/hero';
 import { MetricsStrip } from '@/components/home/metrics-strip';
 import { FiveSystems } from '@/components/home/five-systems';
@@ -8,21 +9,20 @@ import { CaseStudy } from '@/components/home/case-study';
 import { LogosStrip } from '@/components/home/logos-strip';
 import { FounderBlock } from '@/components/home/founder-block';
 import { FinalCTA } from '@/components/home/final-cta';
-import { getDictionary } from '@/lib/dictionaries';
 
 export const metadata: Metadata = {
-  title: 'AHA Solutions — Stop hiring. Start running systems.',
-  description: 'AI systems that capture leads, follow up instantly, and run your operations.',
+  title: 'AHA Solutions — 停止增员。开始运行系统。',
+  description: 'AI 系统自动获取潜在客户、即时跟进、管理运营。',
 };
 
-export default async function HomePage() {
-  const dict = await getDictionary('en');
+export default async function ZhCNHomePage() {
+  const dict = await getDictionary('zh-CN');
 
   return (
     <>
       {/* 1. HOOK — what this is */}
       <div className="wrap">
-        <Hero dict={dict.home.hero} />
+        <Hero dict={dict.home.hero} common={dict.common} />
       </div>
 
       {/* 2. CLARITY — what you get */}
@@ -39,7 +39,7 @@ export default async function HomePage() {
       <FounderBlock dict={dict.home.founderBlock} />
 
       {/* 4. ACTION + 5. REASSURANCE */}
-      <FinalCTA dict={dict.home.finalCta} />
+      <FinalCTA dict={dict.home.finalCta} common={dict.common} />
     </>
   );
 }

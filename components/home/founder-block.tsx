@@ -1,8 +1,20 @@
 import Image from 'next/image';
 import { Eyebrow } from '@/components/primitives';
 import { founderStats } from '@/lib/data';
+import type { FounderBlockDict } from '@/lib/dictionaries/types';
 
-export function FounderBlock() {
+interface FounderBlockProps {
+  dict?: FounderBlockDict;
+}
+
+const defaultDict: FounderBlockDict = {
+  eyebrow: 'FOUNDER',
+  h2: 'Steven Yu',
+  bio1: 'Built automation systems across multiple industries. Former CEO of a public-listed company.',
+  bio2: 'Now focused on helping SMB founders scale without complexity.',
+};
+
+export function FounderBlock({ dict = defaultDict }: FounderBlockProps) {
   return (
     <section className="section" style={{ background: 'var(--bg-2)' }}>
       <div className="wrap">
@@ -18,13 +30,13 @@ export function FounderBlock() {
             </div>
           </div>
           <div>
-            <Eyebrow style={{ marginBottom: 14 }}>FOUNDER</Eyebrow>
-            <h2 style={{ marginBottom: 20 }}>Steven Yu</h2>
+            <Eyebrow style={{ marginBottom: 14 }}>{dict.eyebrow}</Eyebrow>
+            <h2 style={{ marginBottom: 20 }}>{dict.h2}</h2>
             <p style={{ fontSize: 16, color: 'var(--text-2)', lineHeight: 1.6, marginBottom: 16, maxWidth: 540 }}>
-              Built automation systems across multiple industries. Former CEO of a public-listed company.
+              {dict.bio1}
             </p>
             <p style={{ fontSize: 16, color: 'var(--text-2)', lineHeight: 1.6, marginBottom: 28, maxWidth: 540 }}>
-              Now focused on helping SMB founders scale without complexity.
+              {dict.bio2}
             </p>
             <div style={{ display: 'flex', gap: 32, flexWrap: 'wrap', paddingTop: 24, borderTop: '1px solid var(--line)' }}>
               {founderStats.map((s) => (

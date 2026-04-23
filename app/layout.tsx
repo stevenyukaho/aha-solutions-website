@@ -4,6 +4,7 @@ import "./globals.css";
 import { Nav } from "@/components/layout/nav";
 import { Footer } from "@/components/layout/footer";
 import { SITE_URL } from "@/lib/constants";
+import { getDictionary } from "@/lib/dictionaries";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -39,6 +40,15 @@ export const metadata: Metadata = {
     url: SITE_URL,
     siteName: "AHA Solutions",
   },
+  alternates: {
+    canonical: SITE_URL,
+    languages: {
+      'x-default': SITE_URL,
+      'en': SITE_URL,
+      'zh-Hant': `${SITE_URL}/zh-TW`,
+      'zh-Hans': `${SITE_URL}/zh-CN`,
+    },
+  },
 };
 
 const organizationSchema = {
@@ -54,11 +64,13 @@ const organizationSchema = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const dict = await getDictionary('en');
+
   return (
     <html lang="en">
       <head>
@@ -70,9 +82,9 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${jetbrainsMono.variable} ${instrumentSerif.variable} antialiased`}
       >
-        <Nav />
+        <Nav locale="en" dict={dict} />
         <main>{children}</main>
-        <Footer />
+        <Footer locale="en" dict={dict} />
       </body>
     </html>
   );

@@ -1,13 +1,32 @@
 import { Icon, Eyebrow } from '@/components/primitives';
 import { howItWorksSteps } from '@/lib/data';
+import type { HowItWorksDict } from '@/lib/dictionaries/types';
 
-export function HowItWorks() {
+interface HowItWorksProps {
+  dict?: HowItWorksDict;
+}
+
+const defaultDict: HowItWorksDict = {
+  eyebrow: 'HOW IT WORKS',
+  phaseMap: 'Map',
+  phaseSeparator: '→',
+  phaseBuild: 'Build',
+  phaseRun: 'Run',
+};
+
+export function HowItWorks({ dict = defaultDict }: HowItWorksProps) {
   return (
     <section id="how-it-works" className="section">
       <div className="wrap">
         <div style={{ textAlign: 'center', marginBottom: 56 }}>
-          <Eyebrow style={{ marginBottom: 14 }}>HOW IT WORKS</Eyebrow>
-          <h2>Map <span style={{ color: 'var(--text-3)' }}>→</span> Build <span style={{ color: 'var(--text-3)' }}>→</span> Run</h2>
+          <Eyebrow style={{ marginBottom: 14 }}>{dict.eyebrow}</Eyebrow>
+          <h2>
+            {dict.phaseMap}{' '}
+            <span style={{ color: 'var(--text-3)' }}>{dict.phaseSeparator}</span>{' '}
+            {dict.phaseBuild}{' '}
+            <span style={{ color: 'var(--text-3)' }}>{dict.phaseSeparator}</span>{' '}
+            {dict.phaseRun}
+          </h2>
         </div>
 
         <div className="how-it-works-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 18 }}>

@@ -1,13 +1,24 @@
 import { Icon, Arrow, Eyebrow, BtnPrimary } from '@/components/primitives';
 import { fiveSystemCards } from '@/lib/data';
+import type { FiveSystemsDict } from '@/lib/dictionaries/types';
 
-export function FiveSystems() {
+interface FiveSystemsProps {
+  dict?: FiveSystemsDict;
+}
+
+const defaultDict: FiveSystemsDict = {
+  eyebrow: 'FIVE SYSTEMS. ONE PIPELINE.',
+  h2: 'The systems we build',
+  cta: 'Book a free workflow audit',
+};
+
+export function FiveSystems({ dict = defaultDict }: FiveSystemsProps) {
   return (
     <section className="section">
       <div className="wrap">
         <div style={{ textAlign: 'center', marginBottom: 56 }}>
-          <Eyebrow style={{ marginBottom: 14 }}>FIVE SYSTEMS. ONE PIPELINE.</Eyebrow>
-          <h2>The systems we build</h2>
+          <Eyebrow style={{ marginBottom: 14 }}>{dict.eyebrow}</Eyebrow>
+          <h2>{dict.h2}</h2>
         </div>
 
         <div className="five-systems-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(5, minmax(0, 1fr))', gap: 14 }}>
@@ -33,7 +44,7 @@ export function FiveSystems() {
         </div>
 
         <div style={{ display: 'flex', justifyContent: 'center', marginTop: 40 }}>
-          <BtnPrimary>Book a free workflow audit</BtnPrimary>
+          <BtnPrimary>{dict.cta}</BtnPrimary>
         </div>
       </div>
     </section>

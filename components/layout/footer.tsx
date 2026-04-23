@@ -1,4 +1,14 @@
 import Image from 'next/image';
+import Link from 'next/link';
+import { getDictionary } from '@/lib/dictionaries';
+import { getLocalizedPath } from '@/lib/i18n';
+import type { Locale } from '@/lib/i18n';
+import type { Dictionary } from '@/lib/dictionaries/types';
+
+interface FooterProps {
+  locale?: Locale;
+  dict?: Dictionary;
+}
 
 interface NavItem {
   label: string;
@@ -54,33 +64,6 @@ const SOCIAL_LINKS = [
   },
 ] as const;
 
-const NAV_SECTIONS: NavSection[] = [
-  {
-    title: 'Systems',
-    items: [
-      { label: 'Lead Systems', href: '/systems#s1' },
-      { label: 'Sales Systems', href: '/systems#s2' },
-      { label: 'Operations Systems', href: '/systems#s3' },
-      { label: 'AI Systems', href: '/systems' },
-    ],
-  },
-  {
-    title: 'Resources',
-    items: [
-      { label: 'Case Studies', href: '/case-studies' },
-    ],
-  },
-  {
-    title: 'Company',
-    items: [
-      { label: 'Book a Call', href: '/book' },
-      { label: 'About', href: '/about' },
-      { label: 'Our Process', href: '/about' },
-      { label: 'Contact', href: '/book', disabled: false },
-    ],
-  },
-];
-
 const iconBoxStyle: React.CSSProperties = {
   width: 28,
   height: 28,
@@ -91,7 +74,37 @@ const iconBoxStyle: React.CSSProperties = {
   color: 'var(--text-3)',
 };
 
-export function Footer() {
+export async function Footer({ locale = 'en', dict }: FooterProps) {
+  const resolvedDict = dict ?? (await getDictionary(locale));
+  const f = resolvedDict.footer;
+
+  const NAV_SECTIONS: NavSection[] = [
+    {
+      title: f.sectionSystems,
+      items: [
+        { label: f.leadSystems, href: getLocalizedPath('/systems#s1', locale) },
+        { label: f.salesSystems, href: getLocalizedPath('/systems#s2', locale) },
+        { label: f.operationsSystems, href: getLocalizedPath('/systems#s3', locale) },
+        { label: f.aiSystems, href: getLocalizedPath('/systems', locale) },
+      ],
+    },
+    {
+      title: f.sectionResources,
+      items: [
+        { label: f.caseStudies, href: getLocalizedPath('/case-studies', locale) },
+      ],
+    },
+    {
+      title: f.sectionCompany,
+      items: [
+        { label: f.bookACall, href: getLocalizedPath('/book', locale) },
+        { label: f.about, href: getLocalizedPath('/about', locale) },
+        { label: f.ourProcess, href: getLocalizedPath('/about', locale) },
+        { label: f.contact, href: getLocalizedPath('/book', locale), disabled: false },
+      ],
+    },
+  ];
+
   return (
     <footer>
       <div className="wrap">
@@ -107,13 +120,15 @@ export function Footer() {
           {/* Brand */}
           <div>
             <div style={{ marginBottom: 18 }}>
-              <Image
-                src="/aha-logo-full.png"
-                alt="AHA Solutions"
-                width={140}
-                height={37}
-                style={{ opacity: 1 }}
-              />
+              <Link href={getLocalizedPath('/', locale)}>
+                <Image
+                  src="/aha-logo-full.png"
+                  alt="AHA Solutions"
+                  width={140}
+                  height={37}
+                  style={{ opacity: 1 }}
+                />
+              </Link>
             </div>
             <p
               style={{
@@ -123,7 +138,7 @@ export function Footer() {
                 maxWidth: 240,
               }}
             >
-              We build AI systems that replace work for founders who need to scale without hiring.
+              {f.brandDescription}
             </p>
             <div style={{ display: 'flex', gap: 10, marginTop: 18 }}>
               {SOCIAL_LINKS.map((social) =>
@@ -218,7 +233,7 @@ export function Footer() {
             rel="noopener noreferrer"
             style={{ color: 'var(--text-3)' }}
           >
-            WhatsApp (Int&apos;l): +852 6881 8681
+            {f.whatsappLabel}: +852 6881 8681
           </a>
         </div>
 
@@ -233,10 +248,10 @@ export function Footer() {
             color: 'var(--text-3)',
           }}
         >
-          <span>© 2026 AHA Solutions Inc. All rights reserved.</span>
+          <span>{f.copyright}</span>
           <div style={{ display: 'flex', gap: 20 }}>
-            <a href="/privacy-policy" style={{ fontSize: 11, color: 'var(--text-3)' }}>Privacy Policy</a>
-            <a href="/terms-and-conditions" style={{ fontSize: 11, color: 'var(--text-3)' }}>Terms &amp; Conditions</a>
+            <a href={getLocalizedPath('/privacy-policy', locale)} style={{ fontSize: 11, color: 'var(--text-3)' }}>{f.privacyPolicy}</a>
+            <a href={getLocalizedPath('/terms-and-conditions', locale)} style={{ fontSize: 11, color: 'var(--text-3)' }}>{f.termsAndConditions}</a>
           </div>
         </div>
       </div>
