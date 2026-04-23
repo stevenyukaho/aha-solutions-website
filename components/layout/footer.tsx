@@ -235,8 +235,8 @@ export function Footer() {
         >
           <span>© 2026 AHA Solutions Inc. All rights reserved.</span>
           <div style={{ display: 'flex', gap: 20 }}>
-            <a href="https://ahasolutions.ca/privacy-policy/" target="_blank" rel="noopener noreferrer" style={{ fontSize: 11, color: 'var(--text-3)' }}>Privacy Policy</a>
-            <a href="https://ahasolutions.ca/terms-and-conditions/" target="_blank" rel="noopener noreferrer" style={{ fontSize: 11, color: 'var(--text-3)' }}>Terms &amp; Conditions</a>
+            <a href="/privacy-policy" style={{ fontSize: 11, color: 'var(--text-3)' }}>Privacy Policy</a>
+            <a href="/terms-and-conditions" style={{ fontSize: 11, color: 'var(--text-3)' }}>Terms &amp; Conditions</a>
           </div>
         </div>
       </div>

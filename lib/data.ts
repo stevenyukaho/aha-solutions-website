@@ -264,7 +264,6 @@ export const systemBlocks: SystemBlockData[] = [
     n: '02',
     subtitle: 'Sales Follow-up System',
     title: 'Turn more leads into customers',
-    popular: true,
     emphasis: true,
     desc: "Automates the follow-up sequence so warm leads keep moving instead of going cold in someone's inbox.",
     flow: [

@@ -1,7 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { BtnPrimary } from '@/components/primitives/btn-primary';
-import { Icon } from '@/components/primitives/icon';
 import { BOOKING_URL } from '@/lib/constants';
 
 export function Nav() {
@@ -52,19 +51,6 @@ export function Nav() {
         <Link href="/about" style={{ color: 'var(--text-2)', textDecoration: 'none' }}>
           About
         </Link>
-        {/* Resources — disabled, not yet implemented */}
-        <span
-          style={{
-            display: 'inline-flex',
-            alignItems: 'center',
-            gap: 4,
-            cursor: 'default',
-            opacity: 0.5,
-          }}
-          aria-disabled="true"
-        >
-          Resources <Icon name="plus" size={10} />
-        </span>
       </div>
 
       {/* CTA */}
