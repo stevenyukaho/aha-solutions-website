@@ -8,6 +8,7 @@ import type { Locale } from '@/lib/i18n';
 import type { Dictionary } from '@/lib/dictionaries/types';
 import { LanguageSwitcher } from './language-switcher';
 import { StickyNavWrapper } from './sticky-nav-wrapper';
+import { MobileMenu } from './mobile-menu';
 
 interface NavProps {
   locale?: Locale;
@@ -68,12 +69,23 @@ export async function Nav({ locale = 'en', dict }: NavProps) {
         </div>
 
         {/* Language Switcher + CTA */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
+        <div className="hide-md" style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
           <LanguageSwitcher />
           <BtnPrimary href={getLocalizedPath(BOOKING_URL, locale)} size="sm">
             {resolvedDict.nav.cta}
           </BtnPrimary>
         </div>
+
+        {/* Mobile menu (hamburger + overlay) */}
+        <MobileMenu
+          links={[
+            { href: getLocalizedPath('/systems', locale), label: resolvedDict.nav.systems },
+            { href: getLocalizedPath('/case-studies', locale), label: resolvedDict.nav.caseStudies },
+            { href: getLocalizedPath('/about', locale), label: resolvedDict.nav.about },
+          ]}
+          ctaHref={getLocalizedPath(BOOKING_URL, locale)}
+          ctaLabel={resolvedDict.nav.cta}
+        />
       </nav>
     </StickyNavWrapper>
   );
