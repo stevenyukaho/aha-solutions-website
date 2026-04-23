@@ -112,7 +112,7 @@ export function Footer() {
                 alt="AHA Solutions"
                 width={140}
                 height={37}
-                style={{ filter: 'invert(1)', mixBlendMode: 'screen' }}
+                style={{ opacity: 1 }}
               />
             </div>
             <p

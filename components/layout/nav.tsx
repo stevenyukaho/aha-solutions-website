@@ -32,7 +32,7 @@ export function Nav() {
             alt="AHA Solutions"
             width={160}
             height={43}
-            style={{ filter: 'invert(1)', mixBlendMode: 'screen' }}
+            style={{ opacity: 1 }}
             priority
           />
         </Link>
