@@ -17,16 +17,25 @@ export const metadata: Metadata = {
 export default function HomePage() {
   return (
     <>
+      {/* 1. HOOK — what this is */}
       <div className="wrap">
         <Hero />
-        <MetricsStrip />
       </div>
+
+      {/* 2. CLARITY — what you get */}
+      <LogosStrip />
       <FiveSystems />
       <HowItWorks />
       <FlowsSection />
+
+      {/* 3. TRUST — proof */}
+      <div className="wrap">
+        <MetricsStrip />
+      </div>
       <CaseStudy />
       <FounderBlock />
-      <LogosStrip />
+
+      {/* 4. ACTION + 5. REASSURANCE */}
       <FinalCTA />
     </>
   );
