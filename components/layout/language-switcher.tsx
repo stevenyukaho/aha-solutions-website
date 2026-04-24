@@ -2,15 +2,12 @@
 
 import { usePathname } from 'next/navigation';
 import type { Locale } from '@/lib/i18n';
-import { locales, getLocalizedPath } from '@/lib/i18n';
-
-// Only the homepage is translated in Phase 1
-const translatedPaths = ['/'];
+import { locales, getLocalizedPath, translatedPaths } from '@/lib/i18n';
 
 function isTranslated(path: string): boolean {
   // Strip locale prefix to get base path
   const basePath = path.replace(/^\/(zh-TW|zh-CN)/, '') || '/';
-  return translatedPaths.includes(basePath);
+  return translatedPaths.has(basePath);
 }
 
 function getCurrentLocale(pathname: string): Locale {
