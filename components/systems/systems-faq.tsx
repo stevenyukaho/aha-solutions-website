@@ -2,20 +2,21 @@
 
 import { useState } from 'react';
 import { Icon, Eyebrow } from '@/components/primitives';
-import { systemsFaqItems } from '@/lib/data';
+import type { FaqItem } from '@/lib/data';
+import type { SystemsFaqDict } from '@/lib/dictionaries/types';
 
-export function SystemsFAQ() {
+export function SystemsFAQ({ dict, items }: { dict: SystemsFaqDict; items: FaqItem[] }) {
   const [open, setOpen] = useState<number>(0);
 
   return (
     <section className="section" style={{ background: 'var(--bg-2)' }}>
       <div className="wrap">
         <div style={{ textAlign: 'center', marginBottom: 48 }}>
-          <Eyebrow style={{ marginBottom: 12 }}>FAQ</Eyebrow>
-          <h2>Common questions</h2>
+          <Eyebrow style={{ marginBottom: 12 }}>{dict.eyebrow}</Eyebrow>
+          <h2>{dict.h2}</h2>
         </div>
         <div style={{ maxWidth: 780, margin: '0 auto' }}>
-          {systemsFaqItems.map((item, i) => (
+          {items.map((item, i) => (
             <div key={item.q} style={{ borderTop: '1px solid var(--line)' }}>
               <button
                 onClick={() => setOpen(open === i ? -1 : i)}

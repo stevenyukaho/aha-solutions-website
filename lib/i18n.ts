@@ -6,7 +6,7 @@ export const defaultLocale: Locale = 'en';
 
 // Pages that have translated versions. Untranslated pages fall back to English.
 // Used by both getLocalizedPath() and the language switcher.
-export const translatedPaths = new Set(['/']);
+export const translatedPaths = new Set(['/', '/systems', '/about', '/case-studies', '/book']);
 
 /**
  * Returns the localised path for a given path and locale.

@@ -1,4 +1,6 @@
 import type { Metadata } from 'next';
+import { getDictionary } from '@/lib/dictionaries';
+import { getLocalizedData } from '@/lib/data-i18n';
 import { Eyebrow, Icon } from '@/components/primitives';
 import { BookingEmbed } from '@/components/book/booking-embed';
 import { BookingFAQ } from '@/components/book/booking-faq';
@@ -7,28 +9,24 @@ import { HeroBackground } from '@/components/home/hero-background';
 export const metadata: Metadata = {
   title: 'Book a Free Workflow Audit',
   description: "We'll map your workflow, find the gaps, and show you what to automate first.",
+  alternates: {
+    languages: {
+      'en': '/book',
+      'zh-Hant': '/zh-TW/book',
+      'zh-Hans': '/zh-CN/book',
+    },
+  },
 };
 
-const faqItems = [
-  {
-    q: 'What happens on the call?',
-    a: "We'll review your workflow, identify friction points, and show you what to automate first.",
-  },
-  {
-    q: 'Is this a sales call?',
-    a: "No. It's a practical workflow audit.",
-  },
-  {
-    q: 'Do I need anything prepared?',
-    a: 'Just bring your current process or biggest bottleneck.',
-  },
-];
+export default async function BookPage() {
+  const dict = await getDictionary('en');
+  const data = getLocalizedData('en');
+  const book = dict.book!;
 
-export default function BookPage() {
   const faqSchema = {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
-    mainEntity: faqItems.map((item) => ({
+    mainEntity: data.bookFaqItems.map((item) => ({
       '@type': 'Question',
       name: item.q,
       acceptedAnswer: {
@@ -53,7 +51,7 @@ export default function BookPage() {
             {/* 1. Eyebrow with accent bar */}
             <div style={{ display: 'inline-flex', alignItems: 'center', gap: 10, marginBottom: 24 }}>
               <span style={{ width: 20, height: 1, background: 'var(--accent)', display: 'block' }} />
-              <Eyebrow>FREE WORKFLOW AUDIT</Eyebrow>
+              <Eyebrow>{book.eyebrow}</Eyebrow>
               <span style={{ width: 20, height: 1, background: 'var(--accent)', display: 'block' }} />
             </div>
 
@@ -67,8 +65,8 @@ export default function BookPage() {
               letterSpacing: '-0.03em',
               fontWeight: 700,
             }}>
-              Book your free<br />
-              <span className="serif" style={{ fontStyle: 'italic', color: 'var(--accent)' }}>workflow audit</span>
+              {book.h1Line1}<br />
+              <span className="serif" style={{ fontStyle: 'italic', color: 'var(--accent)' }}>{book.h1Line2}</span>
             </h1>
 
             {/* 3. Subhead */}
@@ -79,7 +77,7 @@ export default function BookPage() {
               maxWidth: 500,
               margin: '0 auto 40px',
             }}>
-              We&apos;ll map your workflow, identify where time and leads are being lost, and show you what to automate first.
+              {book.subtitle}
             </p>
 
             {/* 4. Trust pills — with accent dots */}
@@ -90,7 +88,7 @@ export default function BookPage() {
               justifyContent: 'center',
               marginBottom: 28,
             }}>
-              {['40+ systems shipped', '14 days to go live', 'No pitch. No pressure.'].map((text) => (
+              {book.trustPills.map((text) => (
                 <span key={text} className="chip" style={{ gap: 8 }}>
                   <span className="dot" style={{ width: 5, height: 5, borderRadius: '50%', background: 'var(--accent)', flexShrink: 0 }} />
                   {text}
@@ -122,7 +120,7 @@ export default function BookPage() {
                 <Icon name="check" size={11} />
               </span>
               <span style={{ fontSize: 12, color: 'var(--text-3)', letterSpacing: '0.01em' }}>
-                Led by Steven Yu, former CEO turned systems builder.
+                {book.founderLine}
               </span>
             </div>
           </div>
@@ -133,33 +131,33 @@ export default function BookPage() {
 
           {/* 6. Booking embed */}
           <div style={{ marginBottom: 48 }}>
-            <BookingEmbed />
+            <BookingEmbed cta={book.embedCta} />
           </div>
 
           {/* 7. Reassurance */}
           <div style={{ textAlign: 'center', marginBottom: 56 }}>
             <p style={{ fontSize: 15, fontWeight: 600, color: 'var(--text)', marginBottom: 8 }}>
-              No commitment. Just clarity.
+              {book.reassuranceH2}
             </p>
             <p style={{ fontSize: 14, color: 'var(--text-3)' }}>
-              You&apos;ll leave the call knowing exactly what to automate first.
+              {book.reassuranceSub}
             </p>
           </div>
 
           {/* 8. FAQ accordion */}
           <div style={{ marginBottom: 48 }}>
-            <BookingFAQ />
+            <BookingFAQ items={data.bookFaqItems} />
           </div>
 
           {/* 9. Contact fallback */}
           <div style={{ textAlign: 'center', paddingBottom: 16 }}>
             <p style={{ fontSize: 14, color: 'var(--text-3)' }}>
-              Still have questions?{' '}
+              {book.contactFallback}{' '}
               <a
-                href="mailto:steven@ahasolutions.ca"
+                href={`mailto:${book.contactEmail}`}
                 style={{ color: 'var(--accent)', textDecoration: 'underline' }}
               >
-                Email us at steven@ahasolutions.ca
+                {book.contactEmail}
               </a>
             </p>
           </div>

@@ -1,10 +1,10 @@
-const stats = [
-  { v: '40+', l: 'Systems shipped' },
-  { v: '80%', l: 'Faster response time' },
-  { v: '14d', l: 'Average time to go live' },
-];
+import type { StatItem } from '@/lib/data';
 
-export function MidProof() {
+interface MidProofProps {
+  stats: StatItem[];
+}
+
+export function MidProof({ stats }: MidProofProps) {
   return (
     <div className="card" style={{ padding: '32px 28px', marginBottom: 20, background: 'var(--bg-3)' }}>
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 20, alignItems: 'center' }}>

@@ -1,7 +1,9 @@
 import { Icon, Node, Arrow, BtnGhost } from '@/components/primitives';
 import type { SystemBlockData } from '@/lib/data';
+import type { SystemBlockLabelsDict } from '@/lib/dictionaries/types';
 
-export function SystemBlock({ id, n, title, subtitle, desc, flow, flowTag, replaces, outcomes, popular, emphasis }: SystemBlockData) {
+export function SystemBlock({ dict, ...props }: SystemBlockData & { dict: SystemBlockLabelsDict }) {
+  const { id, n, title, subtitle, desc, flow, flowTag, replaces, outcomes, popular, emphasis } = props;
   const padV = emphasis ? 108 : 88;
   return (
     <section
@@ -18,7 +20,7 @@ export function SystemBlock({ id, n, title, subtitle, desc, flow, flowTag, repla
                 <div className="mono" style={{ fontSize: 11, letterSpacing: 1.6, color: 'var(--accent)' }}>{n} · {subtitle.toUpperCase()}</div>
                 {popular && (
                   <span style={{ fontSize: 10.5, letterSpacing: 0.4, padding: '3px 8px', borderRadius: 999, background: 'var(--accent)', color: 'var(--accent-ink)', fontWeight: 600, textTransform: 'uppercase' }}>
-                    Most popular starting point
+                    {dict.popularBadge}
                   </span>
                 )}
               </div>
@@ -26,7 +28,7 @@ export function SystemBlock({ id, n, title, subtitle, desc, flow, flowTag, repla
               <p style={{ color: 'var(--text-2)', fontSize: emphasis ? 17 : 16, lineHeight: 1.55, maxWidth: 640 }}>{desc}</p>
             </div>
             <div style={{ flexShrink: 0 }}>
-              <BtnGhost size="sm">Book a free audit</BtnGhost>
+              <BtnGhost size="sm">{dict.cta}</BtnGhost>
             </div>
           </div>
 
@@ -54,7 +56,7 @@ export function SystemBlock({ id, n, title, subtitle, desc, flow, flowTag, repla
           {/* Pain / Outcome cards */}
           <div className="system-pain-outcome" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: 16 }}>
             <div className="card" style={{ padding: 22 }}>
-              <div className="mono" style={{ fontSize: 10, letterSpacing: 1.4, color: '#ff9e9e', marginBottom: 14 }}>THE PAIN IT REMOVES</div>
+              <div className="mono" style={{ fontSize: 10, letterSpacing: 1.4, color: '#ff9e9e', marginBottom: 14 }}>{dict.painHeading}</div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
                 {replaces.map((t) => (
                   <div key={t} style={{ display: 'flex', alignItems: 'flex-start', gap: 10, fontSize: 13.5, color: 'var(--text-2)', lineHeight: 1.45 }}>
@@ -67,7 +69,7 @@ export function SystemBlock({ id, n, title, subtitle, desc, flow, flowTag, repla
               </div>
             </div>
             <div className="card" style={{ padding: 22, borderColor: 'rgba(245,208,0,0.3)', background: 'linear-gradient(180deg, rgba(245,208,0,0.06), transparent)' }}>
-              <div className="mono" style={{ fontSize: 10, letterSpacing: 1.4, color: 'var(--accent)', marginBottom: 14 }}>WHAT YOU ACTUALLY GET</div>
+              <div className="mono" style={{ fontSize: 10, letterSpacing: 1.4, color: 'var(--accent)', marginBottom: 14 }}>{dict.outcomesHeading}</div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
                 {outcomes.map((t) => (
                   <div key={t} style={{ display: 'flex', alignItems: 'flex-start', gap: 10, fontSize: 13.5, color: 'var(--text)', lineHeight: 1.45 }}>

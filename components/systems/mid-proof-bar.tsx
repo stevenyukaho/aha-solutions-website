@@ -1,6 +1,6 @@
-import { midProofBarStats } from '@/lib/data';
+import type { StatItem } from '@/lib/data';
 
-export function MidProofBar() {
+export function MidProofBar({ stats }: { stats: StatItem[] }) {
   return (
     <section
       style={{
@@ -19,7 +19,7 @@ export function MidProofBar() {
           alignItems: 'center',
         }}
       >
-        {midProofBarStats.map((s, i) => (
+        {stats.map((s, i) => (
           <div
             key={s.l}
             style={{

@@ -1,7 +1,11 @@
 'use client';
 import { useEffect } from 'react';
 
-export function BookingEmbed() {
+interface BookingEmbedProps {
+  cta?: string;
+}
+
+export function BookingEmbed({ cta = 'Book directly →' }: BookingEmbedProps) {
   useEffect(() => {
     const script = document.createElement('script');
     script.src = 'https://link.ahasolutions.ca/js/form_embed.js';
@@ -24,7 +28,7 @@ export function BookingEmbed() {
         href="https://link.ahasolutions.ca/widget/bookings/discovery-call-with-steven-yu"
         style={{ display: 'block', textAlign: 'center', marginTop: 12, fontSize: 13, color: 'var(--text-3)' }}
       >
-        Book directly →
+        {cta}
       </a>
     </div>
   );

@@ -1,4 +1,6 @@
-export function FounderInject() {
+import type { FounderInjectDict } from '@/lib/dictionaries/types';
+
+export function FounderInject({ dict }: { dict: FounderInjectDict }) {
   return (
     <section style={{ padding: '56px 0', borderTop: '1px solid var(--line)' }}>
       <div className="wrap" style={{ maxWidth: 820, display: 'flex', alignItems: 'center', gap: 22 }}>
@@ -30,9 +32,9 @@ export function FounderInject() {
               fontStyle: 'italic',
             }}
           >
-            Built by a former CEO who&apos;s run operations at scale — not just another automation agency.
+            {dict.quote}
           </p>
-          <div className="mono" style={{ fontSize: 10.5, color: 'var(--text-3)', letterSpacing: 1.4, marginTop: 8 }}>AHA · FOUNDER NOTE</div>
+          <div className="mono" style={{ fontSize: 10.5, color: 'var(--text-3)', letterSpacing: 1.4, marginTop: 8 }}>{dict.label}</div>
         </div>
       </div>
     </section>

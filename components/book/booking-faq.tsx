@@ -1,28 +1,18 @@
 'use client';
 import { useState } from 'react';
 import { Icon } from '@/components/primitives';
+import type { FaqItem } from '@/lib/data';
 
-const bookingFaqItems = [
-  {
-    q: 'What happens on the call?',
-    a: "We'll review your workflow, identify friction points, and show you what to automate first.",
-  },
-  {
-    q: 'Is this a sales call?',
-    a: "No. It's a practical workflow audit.",
-  },
-  {
-    q: 'Do I need anything prepared?',
-    a: 'Just bring your current process or biggest bottleneck.',
-  },
-];
+interface BookingFAQProps {
+  items: FaqItem[];
+}
 
-export function BookingFAQ() {
+export function BookingFAQ({ items }: BookingFAQProps) {
   const [open, setOpen] = useState<number>(-1);
 
   return (
     <div style={{ maxWidth: 780, margin: '0 auto' }}>
-      {bookingFaqItems.map((item, i) => (
+      {items.map((item, i) => (
         <div key={item.q} style={{ borderTop: '1px solid var(--line)' }}>
           <button
             onClick={() => setOpen(open === i ? -1 : i)}

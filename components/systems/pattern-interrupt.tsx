@@ -1,4 +1,6 @@
-export function PatternInterrupt() {
+import type { PatternInterruptDict } from '@/lib/dictionaries/types';
+
+export function PatternInterrupt({ dict }: { dict: PatternInterruptDict }) {
   return (
     <section
       style={{
@@ -9,14 +11,12 @@ export function PatternInterrupt() {
       }}
     >
       <div className="wrap" style={{ maxWidth: 860, textAlign: 'center' }}>
-        <div className="mono" style={{ fontSize: 10.5, letterSpacing: 2, color: 'var(--accent)', marginBottom: 28 }}>— PAUSE —</div>
+        <div className="mono" style={{ fontSize: 10.5, letterSpacing: 2, color: 'var(--accent)', marginBottom: 28 }}>{dict.label}</div>
         <h2 style={{ fontSize: 'clamp(32px, 5vw, 52px)', lineHeight: 1.1, marginBottom: 28, letterSpacing: '-0.02em' }}>
-          Most businesses don&apos;t have a <span style={{ color: 'var(--text-3)' }}>lead</span> problem.<br />
-          They have a <span style={{ color: 'var(--accent)' }}>follow-up</span> problem.
+          {dict.h2}
         </h2>
         <p style={{ fontSize: 18, color: 'var(--text-2)', lineHeight: 1.6, maxWidth: 600, margin: '0 auto' }}>
-          Leads come in. Then nothing happens for hours.<br />
-          That&apos;s where systems change everything.
+          {dict.sub}
         </p>
       </div>
     </section>

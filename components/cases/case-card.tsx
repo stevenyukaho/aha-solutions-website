@@ -2,15 +2,17 @@ import { BtnGhost } from '@/components/primitives';
 import { Arrow } from '@/components/primitives';
 import { Icon } from '@/components/primitives';
 import type { CaseStudyData } from '@/lib/data';
+import type { CaseCardDict } from '@/lib/dictionaries/types';
 import { FlowNode } from './flow-node';
 
 interface CaseCardProps {
   c: CaseStudyData;
+  dict: CaseCardDict;
   hero?: boolean;
   reverse?: boolean;
 }
 
-export function CaseCard({ c, hero, reverse }: CaseCardProps) {
+export function CaseCard({ c, dict, hero, reverse }: CaseCardProps) {
   const extraPad = hero ? 40 : 32;
 
   const leftCol = (
@@ -21,7 +23,7 @@ export function CaseCard({ c, hero, reverse }: CaseCardProps) {
         </div>
         {hero && (
           <span style={{ fontSize: 10, letterSpacing: 0.4, padding: '3px 8px', borderRadius: 999, background: 'var(--accent)', color: 'var(--accent-ink)', fontWeight: 600, textTransform: 'uppercase' as const }}>
-            Hero Case
+            {dict.heroBadge}
           </span>
         )}
       </div>
@@ -33,7 +35,7 @@ export function CaseCard({ c, hero, reverse }: CaseCardProps) {
       </p>
 
       {/* Painful problems list */}
-      <div className="mono" style={{ fontSize: 10, letterSpacing: 1.4, color: '#ff9e9e', marginBottom: 12 }}>THE PAIN</div>
+      <div className="mono" style={{ fontSize: 10, letterSpacing: 1.4, color: '#ff9e9e', marginBottom: 12 }}>{dict.painHeading}</div>
       <div style={{ display: 'flex', flexDirection: 'column', gap: 10, marginBottom: 22, maxWidth: 440 }}>
         {c.problems.map((p) => (
           <div key={p} style={{ display: 'flex', alignItems: 'flex-start', gap: 10, fontSize: 13, color: 'var(--text-2)', lineHeight: 1.45 }}>
@@ -56,7 +58,7 @@ export function CaseCard({ c, hero, reverse }: CaseCardProps) {
         ))}
       </div>
       <div>
-        <BtnGhost size="sm">View full breakdown</BtnGhost>
+        <BtnGhost size="sm">{dict.viewCta}</BtnGhost>
       </div>
     </div>
   );
@@ -64,7 +66,7 @@ export function CaseCard({ c, hero, reverse }: CaseCardProps) {
   const rightCol = (
     <div style={{ minWidth: 0 }}>
       <div className="mono" style={{ fontSize: 10.5, letterSpacing: 1.6, color: 'var(--text-3)', marginBottom: 14 }}>
-        THE {c.systemLabel.toUpperCase()} WE BUILT
+        {dict.systemHeadingPrefix} {c.systemLabel.toUpperCase()}
       </div>
       <div style={{ padding: '16px 12px', borderRadius: 12, background: 'var(--bg-3)', border: '1px solid var(--line)', marginBottom: 18 }}>
         <div className="flow-nodes case-flow" style={{ justifyContent: 'space-between', overflowX: 'auto', paddingBottom: 4 }}>
@@ -78,7 +80,7 @@ export function CaseCard({ c, hero, reverse }: CaseCardProps) {
       </div>
 
       <div className="mono" style={{ fontSize: 10.5, letterSpacing: 1.6, color: 'var(--text-3)', marginBottom: 12 }}>
-        RESULTS
+        {dict.resultsHeading}
       </div>
       <div style={{ padding: '20px 18px', borderRadius: 12, background: 'var(--bg-3)', border: '1px solid var(--line)' }}>
         <div style={{ display: 'grid', gridTemplateColumns: `repeat(${c.results.length}, 1fr)`, gap: 16 }}>

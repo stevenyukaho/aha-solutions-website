@@ -123,6 +123,206 @@ export interface HomeDict {
   logosStrip: LogosStripDict;
 }
 
+// ── Systems page dictionaries ────────────────────────────────────────────────
+
+export interface SystemsHeroDict {
+  h1: string;
+  h2: string;
+  subtitle: string;
+  cta: string;
+  tags: string[];
+}
+
+export interface SystemBlockLabelsDict {
+  popularBadge: string;
+  painHeading: string;
+  outcomesHeading: string;
+  cta: string;
+}
+
+export interface SystemsNavDict {
+  jumpTo: string;
+}
+
+export interface PatternInterruptDict {
+  label: string;
+  h2: string;
+  sub: string;
+}
+
+export interface FounderInjectDict {
+  quote: string;
+  label: string;
+}
+
+export interface SystemsProofDict {
+  eyebrow: string;
+  h2: string;
+  sub: string;
+}
+
+export interface SystemsFaqDict {
+  eyebrow: string;
+  h2: string;
+}
+
+export interface SystemsFinalCtaDict {
+  eyebrow: string;
+  h2: string;
+  description: string;
+  cta: string;
+  mono: string;
+}
+
+export interface SystemsDict {
+  hero: SystemsHeroDict;
+  blockLabels: SystemBlockLabelsDict;
+  nav: SystemsNavDict;
+  patternInterrupt: PatternInterruptDict;
+  founderInject: FounderInjectDict;
+  proof: SystemsProofDict;
+  faq: SystemsFaqDict;
+  finalCta: SystemsFinalCtaDict;
+}
+
+// ── About page dictionaries ─────────────────────────────────────────────────
+
+export interface AboutHeroDict {
+  eyebrow: string;
+  h1: string;
+  subtitle: string;
+  highlight: string;
+  founderLine: string;
+  cta: string;
+  ctaSub: string;
+}
+
+export interface ShiftSectionDict {
+  eyebrow: string;
+  h2: string;
+}
+
+export interface WhatAndHowDict {
+  whatEyebrow: string;
+  whatIntro: string;
+  whatDisclaimer: string;
+  whatClosing: string;
+  howEyebrow: string;
+  howIntro: string;
+  howClosing: string;
+}
+
+export interface AboutFounderDict {
+  eyebrow: string;
+  quote: string;
+  bio1: string;
+  bio2: string;
+  breaksList: string[];
+  closing: string;
+}
+
+export interface DifferentStripDict {
+  eyebrow: string;
+}
+
+export interface WhoThisIsForDict {
+  eyebrow: string;
+  h2: string;
+  closing: string;
+  quote: string;
+  attribution: string;
+}
+
+export interface AboutFinalCtaDict {
+  h2: string;
+  description: string;
+  ctaSub: string;
+  cta: string;
+}
+
+export interface AboutDict {
+  hero: AboutHeroDict;
+  shift: ShiftSectionDict;
+  whatAndHow: WhatAndHowDict;
+  founder: AboutFounderDict;
+  different: DifferentStripDict;
+  whoThisIsFor: WhoThisIsForDict;
+  finalCta: AboutFinalCtaDict;
+}
+
+// ── Case Studies page dictionaries ──────────────────────────────────────────
+
+export interface CasesHeroDict {
+  eyebrow: string;
+  h1: string;
+  subtitle: string;
+  tags: string[];
+}
+
+export interface CaseCardDict {
+  heroBadge: string;
+  painHeading: string;
+  systemHeadingPrefix: string;
+  resultsHeading: string;
+  viewCta: string;
+}
+
+export interface InsightBlockDict {
+  eyebrow: string;
+  quote: string;
+}
+
+export interface PatternStripDict {
+  label: string;
+  h2: string;
+  sub: string;
+}
+
+export interface FounderLineDict {
+  quote: string;
+  label: string;
+}
+
+export interface CasesFinalCtaDict {
+  h2: string;
+  description: string;
+  ctaSub: string;
+  cta: string;
+  pills: string[];
+}
+
+export interface CasesRunwayDict {
+  emptyState: string;
+  emptyLink: string;
+  emptyEnd: string;
+}
+
+export interface CasesDict {
+  hero: CasesHeroDict;
+  card: CaseCardDict;
+  insight: InsightBlockDict;
+  pattern: PatternStripDict;
+  founderLine: FounderLineDict;
+  finalCta: CasesFinalCtaDict;
+  runway: CasesRunwayDict;
+}
+
+// ── Book page dictionaries ──────────────────────────────────────────────────
+
+export interface BookDict {
+  eyebrow: string;
+  h1Line1: string;
+  h1Line2: string;
+  subtitle: string;
+  trustPills: string[];
+  founderLine: string;
+  reassuranceH2: string;
+  reassuranceSub: string;
+  contactFallback: string;
+  contactEmail: string;
+  embedCta: string;
+}
+
 // ── Top-level Dictionary (merged from home + common files) ────────────────────
 
 export interface Dictionary {
@@ -130,4 +330,8 @@ export interface Dictionary {
   footer: FooterDict;
   common: CommonDict;
   home: HomeDict;
+  systems: SystemsDict;
+  about: AboutDict;
+  cases: CasesDict;
+  book: BookDict;
 }

@@ -1,19 +1,24 @@
 import { Icon } from '@/components/primitives';
-import { shiftRows } from '@/lib/data';
+import type { ShiftSectionDict } from '@/lib/dictionaries/types';
+import type { ShiftRow } from '@/lib/data';
 
-export function ShiftSection() {
+interface Props {
+  dict: ShiftSectionDict;
+  rows: ShiftRow[];
+}
+
+export function ShiftSection({ dict, rows }: Props) {
   return (
     <div className="card" style={{ padding: '44px 36px', marginBottom: 20 }}>
       <div className="shift-grid" style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1fr) minmax(0, 1.3fr)', gap: 48, alignItems: 'center' }}>
         <div style={{ minWidth: 0 }}>
-          <div className="mono" style={{ fontSize: 10.5, letterSpacing: 1.6, color: 'var(--accent)', marginBottom: 14 }}>THE SHIFT</div>
+          <div className="mono" style={{ fontSize: 10.5, letterSpacing: 1.6, color: 'var(--accent)', marginBottom: 14 }}>{dict.eyebrow}</div>
           <h2 style={{ fontSize: 'clamp(26px, 3vw, 36px)', lineHeight: 1.1, marginBottom: 0 }}>
-            Most businesses don&apos;t have a tools problem.<br />
-            They have a <span style={{ color: 'var(--accent)' }}>systems problem.</span>
+            {dict.h2}
           </h2>
         </div>
         <div className="shift-cols" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 20 }}>
-          {shiftRows.map((r, i) => (
+          {rows.map((r, i) => (
             <div key={i} style={{ display: 'flex', flexDirection: 'column', gap: 10, paddingLeft: i === 0 ? 0 : 18, borderLeft: i === 0 ? 'none' : '1px solid var(--line)' }}>
               <span style={{ width: 34, height: 34, borderRadius: 9, background: 'rgba(184,156,247,0.12)', color: 'var(--purple)', display: 'grid', placeItems: 'center', marginBottom: 4 }}>
                 <Icon name={r.icon} size={15} />
