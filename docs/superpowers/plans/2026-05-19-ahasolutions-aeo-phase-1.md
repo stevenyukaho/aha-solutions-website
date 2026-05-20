@@ -1550,3 +1550,32 @@ All spec items covered or explicitly marked skipped with reason.
 **Placeholder scan:** No `TBD` / `TODO` left in the plan body. The intentional `address` / `sameAs` deferrals are explicit Task 18 gates with concrete fill instructions, not placeholders.
 
 **Scope check:** ~20 tasks, each 2–15 minutes of focused work. Falls within the ~2-day estimate from the spec.
+
+---
+
+## Verification log
+
+### Production deploy — 2026-05-20
+
+Merge commit: `d54d3a9` (PR #1 → main). Vercel auto-deployed within ~2 minutes.
+
+**curl verification against `https://www.ahasolutions.ca`:**
+
+| Surface | Expected | Result |
+|---|---|---|
+| `/llms.txt` HTTP status | 200 | ✅ 200 |
+| `/llms.txt` `Cache-Control` | `public, max-age=3600, s-maxage=3600` | ✅ matches |
+| `/robots.txt` user-agent blocks | 8 (7 AI bots + wildcard) | ✅ 8 |
+| `/` JSON-LD blocks | 2 (siteGraph + FAQPage) | ✅ 2 |
+| `/` siteGraph `@graph` types | `Organization`, `WebSite`, `Person` | ✅ all 3 |
+| `/` FAQPage `mainEntity.length` | 8 | ✅ 8 |
+
+**Phase 1b decision (Task 18 Step 0):** Ship right after Phase 1 lands. Schedule the zh-TW + zh-CN translation pass for `llms.txt` body, `enHomeFaqItems` (→ zhTWHomeFaqItems + zhCNHomeFaqItems), and `dict.home.faq` heading within ~1 week of production deploy (target: 2026-05-27).
+
+**Outstanding (manual, post-deploy):**
+
+- Schema.org Validator pass for each block on `/`, `/systems`, `/about`, `/book` → 0 errors.
+- Google Rich Results Test on `/` → FAQ detected (8 items).
+- Lighthouse SEO on `/` → ≥ 100.
+- Re-fetch sitemap in Google Search Console.
+- T+0 AEO baseline capture in `docs/superpowers/plans/2026-05-19-aeo-baseline.md` (ChatGPT / Claude / Perplexity × 4 prompts).
