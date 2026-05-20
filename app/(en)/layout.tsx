@@ -70,7 +70,10 @@ const siteGraph = {
         contactType: 'sales',
         url: `${SITE_URL}/book`,
       },
-      // address and sameAs are filled in Task 18 before production deploy.
+      sameAs: [
+        'https://www.linkedin.com/company/104468646/',
+      ],
+      // address intentionally omitted (Phase 1 decision); add when public business address is settled.
     },
     {
       '@type': 'WebSite',
