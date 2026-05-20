@@ -51,17 +51,47 @@ export const metadata: Metadata = {
   },
 };
 
-const organizationSchema = {
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  name: "AHA Solutions",
-  url: SITE_URL,
-  description:
-    "AI systems that capture leads, follow up instantly, and run your operations — so you can scale without adding headcount.",
-  founder: {
-    "@type": "Person",
-    name: "Steven Yu",
-  },
+const siteGraph = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Organization',
+      '@id': `${SITE_URL}/#organization`,
+      name: 'AHA Solutions & Systems Inc.',
+      alternateName: 'AHA Solutions',
+      url: SITE_URL,
+      logo: `${SITE_URL}/aha-logo-full.png`,
+      description:
+        'AI systems that capture leads, follow up instantly, and run your operations — so you can scale without adding headcount.',
+      founder: { '@id': `${SITE_URL}/about#steven-yu` },
+      areaServed: ['CA', 'HK'],
+      contactPoint: {
+        '@type': 'ContactPoint',
+        contactType: 'sales',
+        url: `${SITE_URL}/book`,
+      },
+      // address and sameAs are filled in Task 18 before production deploy.
+    },
+    {
+      '@type': 'WebSite',
+      '@id': `${SITE_URL}/#website`,
+      url: SITE_URL,
+      name: 'AHA Solutions',
+      publisher: { '@id': `${SITE_URL}/#organization` },
+      inLanguage: ['en', 'zh-TW', 'zh-CN'],
+    },
+    {
+      '@type': 'Person',
+      '@id': `${SITE_URL}/about#steven-yu`,
+      name: 'Steven Yu',
+      jobTitle: 'Founder & CEO',
+      worksFor: { '@id': `${SITE_URL}/#organization` },
+      description:
+        'Former CEO of a publicly-listed company. 15+ years leadership experience. Has shipped 40+ automation systems for SMB founders.',
+      image: `${SITE_URL}/steven-yu.png`,
+      url: `${SITE_URL}/about`,
+    },
+  ],
 };
 
 export default async function RootLayout({
@@ -76,7 +106,7 @@ export default async function RootLayout({
       <head>
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(siteGraph) }}
         />
       </head>
       <body
