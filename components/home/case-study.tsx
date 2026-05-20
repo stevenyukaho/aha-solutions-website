@@ -29,10 +29,11 @@ const avatarGradients: Record<string, string> = {
 
 export function CaseStudy({ dict = defaultDict, before = caseStudyBefore, after = caseStudyAfter, testimonials = defaultTestimonials }: CaseStudyProps) {
   return (
-    <section className="section">
+    <>
+    <section className="section" aria-labelledby="case-study">
       <div className="wrap">
         <Eyebrow style={{ marginBottom: 12 }}>{dict.eyebrow}</Eyebrow>
-        <h2 style={{ marginBottom: 32, maxWidth: 820 }}>{dict.h2}</h2>
+        <h2 id="case-study" style={{ marginBottom: 32, maxWidth: 820 }}>{dict.h2}</h2>
 
         <div className="case-study-grid" style={{ display: 'grid', gridTemplateColumns: '1.4fr 1fr 1fr', gap: 24, alignItems: 'center' }}>
           {/* Before */}
@@ -72,10 +73,13 @@ export function CaseStudy({ dict = defaultDict, before = caseStudyBefore, after 
           </div>
         </div>
 
-        {/* Testimonials */}
-        <div style={{ marginTop: 80 }}>
+      </div>
+    </section>
+
+    <section className="section" aria-labelledby="testimonials">
+      <div className="wrap">
           <Eyebrow style={{ marginBottom: 12 }}>{dict.testimonialsEyebrow}</Eyebrow>
-          <h2 style={{ marginBottom: 32 }}>{dict.testimonialsH2}</h2>
+          <h2 id="testimonials" style={{ marginBottom: 32 }}>{dict.testimonialsH2}</h2>
 
           <div className="testimonials-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 20 }}>
             {testimonials.map((t) => (
@@ -107,8 +111,8 @@ export function CaseStudy({ dict = defaultDict, before = caseStudyBefore, after 
               </div>
             ))}
           </div>
-        </div>
       </div>
     </section>
+    </>
   );
 }

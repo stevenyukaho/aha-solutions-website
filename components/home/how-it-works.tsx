@@ -18,11 +18,11 @@ const defaultDict: HowItWorksDict = {
 
 export function HowItWorks({ dict = defaultDict, steps = howItWorksSteps }: HowItWorksProps) {
   return (
-    <section id="how-it-works" className="section">
+    <section id="how-it-works" className="section" aria-labelledby="process">
       <div className="wrap">
         <div style={{ textAlign: 'center', marginBottom: 56 }}>
           <Eyebrow style={{ marginBottom: 14 }}>{dict.eyebrow}</Eyebrow>
-          <h2>
+          <h2 id="process">
             {dict.phaseMap}{' '}
             <span style={{ color: 'var(--text-3)' }}>{dict.phaseSeparator}</span>{' '}
             {dict.phaseBuild}{' '}

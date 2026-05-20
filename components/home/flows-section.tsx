@@ -22,13 +22,13 @@ export function FlowsSection({ dict = defaultDict, flows = defaultFlowsData }: F
   const data = flows[tab];
 
   return (
-    <section className="section" style={{ background: 'var(--bg-2)' }}>
+    <section className="section" style={{ background: 'var(--bg-2)' }} aria-labelledby="system-overview">
       <div className="wrap">
         <div style={{ textAlign: 'center', marginBottom: 10 }}>
           <Eyebrow>{dict.eyebrow}</Eyebrow>
         </div>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 40, flexWrap: 'wrap', gap: 16 }}>
-          <h2>{dict.h2}</h2>
+          <h2 id="system-overview">{dict.h2}</h2>
           <div className="tabs">
             {(Object.entries(flows) as [FlowTabKey, FlowTabConfig][]).map(([k, v]) => (
               <button key={k} onClick={() => setTab(k)} className={tab === k ? 'on' : ''}>

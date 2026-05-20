@@ -18,11 +18,11 @@ const defaultDict: FinalCtaDict = {
 
 export function FinalCTA({ dict = defaultDict, bookingUrl = BOOKING_URL }: FinalCTAProps) {
   return (
-    <section className="section">
+    <section className="section" aria-labelledby="cta">
       <div className="wrap">
         <div className="final-cta-grid" style={{ background: 'var(--accent)', color: 'var(--accent-ink)', borderRadius: 20, padding: '64px 52px', display: 'grid', gridTemplateColumns: '1.2fr 1fr', gap: 40, alignItems: 'center' }}>
           <div>
-            <h2 style={{ color: 'var(--accent-ink)', marginBottom: 14 }}>{dict.h2}</h2>
+            <h2 id="cta" style={{ color: 'var(--accent-ink)', marginBottom: 14 }}>{dict.h2}</h2>
             <p style={{ fontSize: 16, opacity: 0.8, maxWidth: 520 }}>
               {dict.description}
             </p>
