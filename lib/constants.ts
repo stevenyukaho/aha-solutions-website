@@ -1,2 +1,2 @@
 export const BOOKING_URL = '/book';
-export const SITE_URL = 'https://ahasolutions.ca';
+export const SITE_URL = 'https://www.ahasolutions.ca';
