@@ -18,7 +18,7 @@ const defaultDict: FounderBlockDict = {
 
 export function FounderBlock({ dict = defaultDict, stats = defaultFounderStats }: FounderBlockProps) {
   return (
-    <section className="section" style={{ background: 'var(--bg-2)' }}>
+    <section className="section" style={{ background: 'var(--bg-2)' }} aria-labelledby="founder">
       <div className="wrap">
         <div className="founder-grid" style={{ display: 'grid', gridTemplateColumns: '0.9fr 1.2fr', gap: 56, alignItems: 'center' }}>
           <div>
@@ -33,7 +33,7 @@ export function FounderBlock({ dict = defaultDict, stats = defaultFounderStats }
           </div>
           <div>
             <Eyebrow style={{ marginBottom: 14 }}>{dict.eyebrow}</Eyebrow>
-            <h2 style={{ marginBottom: 20 }}>{dict.h2}</h2>
+            <h2 id="founder" style={{ marginBottom: 20 }}>{dict.h2}</h2>
             <p style={{ fontSize: 16, color: 'var(--text-2)', lineHeight: 1.6, marginBottom: 16, maxWidth: 540 }}>
               {dict.bio1}
             </p>

@@ -16,11 +16,11 @@ const defaultDict: FiveSystemsDict = {
 
 export function FiveSystems({ dict = defaultDict, cards = fiveSystemCards }: FiveSystemsProps) {
   return (
-    <section className="section">
+    <section className="section" aria-labelledby="systems-we-build">
       <div className="wrap">
         <div style={{ textAlign: 'center', marginBottom: 56 }}>
           <Eyebrow style={{ marginBottom: 14 }}>{dict.eyebrow}</Eyebrow>
-          <h2>{dict.h2}</h2>
+          <h2 id="systems-we-build">{dict.h2}</h2>
         </div>
 
         <div className="five-systems-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(5, minmax(0, 1fr))', gap: 14 }}>

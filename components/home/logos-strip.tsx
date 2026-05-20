@@ -47,9 +47,14 @@ export function LogosStrip({ dict = defaultDict }: LogosStripProps) {
 
       {/* Full-width marquee (no wrap constraint) */}
       <div className="marquee" style={{ marginBottom: 48 }}>
-        <div className="marquee-track">
+        <ul
+          role="list"
+          aria-label="Tools and platforms we build with"
+          className="marquee-track"
+          style={{ listStyle: 'none', padding: 0, margin: 0 }}
+        >
           {items.map((name, i) => (
-            <span
+            <li
               key={`${name}-${i}`}
               style={{
                 fontSize: 18,
@@ -61,9 +66,9 @@ export function LogosStrip({ dict = defaultDict }: LogosStripProps) {
               }}
             >
               {name}
-            </span>
+            </li>
           ))}
-        </div>
+        </ul>
       </div>
 
       {/* Partnership */}

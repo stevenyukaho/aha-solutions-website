@@ -67,6 +67,12 @@ const home: HomeDict = {
     partnershipLabel: '合作伙伴',
     partnershipName: 'ventureLAB',
   },
+
+  // Phase 1: stubbed to en; Phase 1b will translate
+  faq: {
+    heading: 'Questions founders ask',
+    sectionId: 'faq',
+  },
 };
 
 export default home;

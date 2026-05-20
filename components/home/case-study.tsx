@@ -29,10 +29,11 @@ const avatarGradients: Record<string, string> = {
 
 export function CaseStudy({ dict = defaultDict, before = caseStudyBefore, after = caseStudyAfter, testimonials = defaultTestimonials }: CaseStudyProps) {
   return (
-    <section className="section">
+    <>
+    <section className="section" aria-labelledby="case-study">
       <div className="wrap">
         <Eyebrow style={{ marginBottom: 12 }}>{dict.eyebrow}</Eyebrow>
-        <h2 style={{ marginBottom: 32, maxWidth: 820 }}>{dict.h2}</h2>
+        <h2 id="case-study" style={{ marginBottom: 32, maxWidth: 820 }}>{dict.h2}</h2>
 
         <div className="case-study-grid" style={{ display: 'grid', gridTemplateColumns: '1.4fr 1fr 1fr', gap: 24, alignItems: 'center' }}>
           {/* Before */}
@@ -72,19 +73,22 @@ export function CaseStudy({ dict = defaultDict, before = caseStudyBefore, after 
           </div>
         </div>
 
-        {/* Testimonials */}
-        <div style={{ marginTop: 80 }}>
+      </div>
+    </section>
+
+    <section className="section" aria-labelledby="testimonials">
+      <div className="wrap">
           <Eyebrow style={{ marginBottom: 12 }}>{dict.testimonialsEyebrow}</Eyebrow>
-          <h2 style={{ marginBottom: 32 }}>{dict.testimonialsH2}</h2>
+          <h2 id="testimonials" style={{ marginBottom: 32 }}>{dict.testimonialsH2}</h2>
 
           <div className="testimonials-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 20 }}>
             {testimonials.map((t) => (
-              <div key={t.name} className="card" style={{ padding: 28, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
-                <div className="serif" style={{ fontSize: 16, lineHeight: 1.5, fontStyle: 'italic', color: 'var(--text-2)', marginBottom: 24 }}>
-                  &ldquo;{t.quote}&rdquo;
-                </div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-                  <div style={{
+              <article key={t.name} className="card testimonial" style={{ padding: 28, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+                <blockquote className="serif" style={{ fontSize: 16, lineHeight: 1.5, fontStyle: 'italic', color: 'var(--text-2)', marginBottom: 24, margin: 0, marginInlineStart: 0 }}>
+                  <p style={{ margin: 0, marginBottom: 24 }}>&ldquo;{t.quote}&rdquo;</p>
+                </blockquote>
+                <footer style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+                  <div aria-hidden="true" style={{
                     width: 40,
                     height: 40,
                     borderRadius: 999,
@@ -97,18 +101,18 @@ export function CaseStudy({ dict = defaultDict, before = caseStudyBefore, after 
                   }}>
                     {t.initial}
                   </div>
-                  <div>
-                    <div style={{ fontSize: 13, fontWeight: 600 }}>{t.name}</div>
-                    <div className="mono" style={{ fontSize: 10, color: 'var(--text-3)', letterSpacing: 1 }}>
+                  <cite style={{ fontStyle: 'normal' }}>
+                    <span className="testimonial-name" style={{ fontSize: 13, fontWeight: 600, display: 'block' }}>{t.name}</span>
+                    <span className="mono testimonial-role" style={{ fontSize: 10, color: 'var(--text-3)', letterSpacing: 1, display: 'block' }}>
                       {t.title.toUpperCase()}, {t.company.toUpperCase()}
-                    </div>
-                  </div>
-                </div>
-              </div>
+                    </span>
+                  </cite>
+                </footer>
+              </article>
             ))}
           </div>
-        </div>
       </div>
     </section>
+    </>
   );
 }
