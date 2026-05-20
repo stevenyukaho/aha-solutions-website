@@ -39,16 +39,22 @@ export function FlowsSection({ dict = defaultDict, flows = defaultFlowsData }: F
         </div>
 
         <div className="card" style={{ padding: '40px 32px' }}>
-          <div className="flow-nodes" style={{ justifyContent: 'space-between' }}>
+          <ol
+            className="flow-nodes"
+            aria-label={`${data.label} flow`}
+            style={{ justifyContent: 'space-between', listStyle: 'none', margin: 0, padding: 0 }}
+          >
             {data.nodes.map((n, i, arr) => (
-              <div key={`${tab}-${i}`} style={{ display: 'contents' }}>
+              <li key={`${tab}-${i}`} style={{ display: 'contents' }}>
                 <Node icon={n.icon} label={n.label} sub={n.sub} accent={n.accent} />
                 {i < arr.length - 1 && (
-                  <Arrow active={data.nodes[i].accent || data.nodes[i + 1].accent} length={32} />
+                  <span aria-hidden="true" style={{ display: 'contents' }}>
+                    <Arrow active={data.nodes[i].accent || data.nodes[i + 1].accent} length={32} />
+                  </span>
                 )}
-              </div>
+              </li>
             ))}
-          </div>
+          </ol>
         </div>
 
         <div className="mono" style={{ textAlign: 'center', marginTop: 20, fontSize: 10.5, letterSpacing: 1.4, color: 'var(--text-3)' }}>
