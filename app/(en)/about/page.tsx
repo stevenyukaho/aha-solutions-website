@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { getDictionary } from '@/lib/dictionaries';
 import { getLocalizedData } from '@/lib/data-i18n';
+import { SITE_URL } from '@/lib/constants';
 import { AboutHero } from '@/components/about/about-hero';
 import { ShiftSection } from '@/components/about/shift-section';
 import { WhatAndHow } from '@/components/about/what-and-how';
@@ -27,8 +28,18 @@ export default async function AboutPage() {
   const data = getLocalizedData('en');
   const about = dict.about!;
 
+  const profilePageSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'ProfilePage',
+    mainEntity: { '@id': `${SITE_URL}/about#steven-yu` },
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(profilePageSchema) }}
+      />
       <AboutHero dict={about.hero} />
       <div className="wrap">
       <ShiftSection dict={about.shift} rows={data.shiftRows} />
