@@ -1152,6 +1152,45 @@ const zhCNMidProofCasesStats: StatItem[] = [
 ];
 
 // ============================================================
+// HOMEPAGE FAQ (Phase 1 AEO — EN filled, zh stubbed for Phase 1b)
+// ============================================================
+
+export const enHomeFaqItems: FaqItem[] = [
+  {
+    q: 'What does AHA Solutions actually build?',
+    a: "We build Growth Systems — combinations of AI agents, automation workflows, and CRM integrations that capture leads, respond in under 60 seconds, follow up on autopilot, and handle repetitive operations. We don't sell software; we install the system that runs inside your business. Five core systems: Lead Capture & Response, Sales Follow-up, Operations Automation, Client Onboarding, and End-to-End Growth.",
+  },
+  {
+    q: 'Who is this for?',
+    a: "SMB founders and lean teams (typically 1–20 people) who are losing leads to slow response times, drowning in repetitive admin, or hitting a hiring ceiling. We're a fit if you can't or don't want to add headcount but still need to scale outreach, follow-up, and operations.",
+  },
+  {
+    q: 'How is this different from hiring a VA or another agency?',
+    a: "A VA does the work; we build a system that does the work — without sick days, training cycles, or context loss. Versus other agencies: we don't sell deliverables, we install operational infrastructure you own. Average go-live is 14 days, and the system keeps running long after the project ends.",
+  },
+  {
+    q: 'How fast can a system go live?',
+    a: 'Around 14 days from kickoff to live system. The Map → Build → Run process: (1) we map your workflow and find where leads and time are leaking; (2) we design and ship the system with documentation; (3) it runs with minimal manual input — we monitor and refine over time.',
+  },
+  {
+    q: 'What tools and platforms do you use?',
+    a: "We pick from a stable stack — Airtable, Make, n8n, Claude, Gemini, ChatGPT, GoHighLevel, Next.js, WordPress, Wix, HeyGen, Zapier — based on what you already use and what the system needs to do. We integrate; we don't force you onto our tools.",
+  },
+  {
+    q: 'What does it cost?',
+    a: 'Pricing depends on system scope and complexity. The 30-minute audit is free and includes a written assessment with no obligation. We quote after we understand your workflow.',
+  },
+  {
+    q: 'Do you work with HK or Canada clients?',
+    a: 'Both. AHA Solutions is based in Canada (ventureLAB partner). Steven Yu was previously CEO of a publicly-listed company in Hong Kong, so we know both markets. Current client work spans both — examples include Maple Study Link (Canada), Tint Wrap Auto (Canada), and Wine Century (HK).',
+  },
+  {
+    q: "What if I don't know what to automate yet?",
+    a: "That's exactly what the free 30-minute audit is for. We don't expect you to arrive with a spec. The audit identifies where leads and time are leaking and what's most worth automating first. No pitch. No pressure.",
+  },
+];
+
+// ============================================================
 // BOOK PAGE DATA (locale-aware)
 // ============================================================
 
@@ -1208,6 +1247,8 @@ export interface LocalizedData {
   midProofCasesStats: StatItem[];
   // Book page
   bookFaqItems: FaqItem[];
+  // Homepage FAQ (Phase 1 AEO)
+  homeFaqItems: FaqItem[];
 }
 
 export function getLocalizedData(locale: Locale): LocalizedData {
@@ -1227,6 +1268,8 @@ export function getLocalizedData(locale: Locale): LocalizedData {
       casesHeroStats: zhTWCasesHeroStats, caseFilters: zhTWCaseFilters,
       caseStudies: zhTWCaseStudiesData, midProofCasesStats: zhTWMidProofCasesStats,
       bookFaqItems: zhTWBookFaqItems,
+      // homeFaqItems intentionally stubbed to en for Phase 1; translated in Phase 1b
+      homeFaqItems: enHomeFaqItems,
     };
   }
 
@@ -1246,6 +1289,8 @@ export function getLocalizedData(locale: Locale): LocalizedData {
       casesHeroStats: zhCNCasesHeroStats, caseFilters: zhCNCaseFilters,
       caseStudies: zhCNCaseStudiesData, midProofCasesStats: zhCNMidProofCasesStats,
       bookFaqItems: zhCNBookFaqItems,
+      // homeFaqItems intentionally stubbed to en for Phase 1; translated in Phase 1b
+      homeFaqItems: enHomeFaqItems,
     };
   }
 
@@ -1265,5 +1310,6 @@ export function getLocalizedData(locale: Locale): LocalizedData {
     casesHeroStats: enCasesHeroStats, caseFilters: enCaseFilters,
     caseStudies: enCaseStudiesData, midProofCasesStats: enMidProofCasesStats,
     bookFaqItems: enBookFaqItems,
+    homeFaqItems: enHomeFaqItems,
   };
 }

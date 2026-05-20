@@ -68,6 +68,11 @@ const home: HomeDict = {
     partnershipLabel: 'In Partnerships with',
     partnershipName: 'ventureLAB',
   },
+
+  faq: {
+    heading: 'Questions founders ask',
+    sectionId: 'faq',
+  },
 };
 
 export default home;

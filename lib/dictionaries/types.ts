@@ -112,6 +112,11 @@ export interface LogosStripDict {
   partnershipName: string;
 }
 
+export interface FaqSectionDict {
+  heading: string;
+  sectionId: string;
+}
+
 export interface HomeDict {
   hero: HeroDict;
   fiveSystems: FiveSystemsDict;
@@ -121,6 +126,7 @@ export interface HomeDict {
   founderBlock: FounderBlockDict;
   finalCta: FinalCtaDict;
   logosStrip: LogosStripDict;
+  faq: FaqSectionDict;
 }
 
 // ── Systems page dictionaries ────────────────────────────────────────────────
